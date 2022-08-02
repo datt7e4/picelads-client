@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto+Condensed:wght@300&family=Tiro+Devanagari+Sanskrit&display=swap");
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  /* background-color: #001529; */
+}
+
+.footer {
+  background-color: #001529;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1048px) {
+  .footer {
+    width: 1008px;
+  }
+}

@@ -1,0 +1,13 @@
+#drawingPanel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.img {
+  flex-direction: row;
+}
+
+#pixels {
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,23 @@
+/* .container {
+  display: flex;
+  flex-direction: column;
+} */
+
+.panel-container {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.panel {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+}
+
+@media only screen and (min-width: 1048px) {
+  .panel-container {
+    justify-content: center;
+  }
+}
