@@ -27,7 +27,7 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Buy Now</Button>
+      <Button onClick={handleOpen}>Post Free Now</Button>
       <Modal
         hideBackdrop
         open={open}
