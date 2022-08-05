@@ -20,6 +20,8 @@ const style = {
   p: 4,
 };
 
+const user = JSON.parse(localStorage.getItem("profile"));
+
 export default function Pixel({ selectedColor, pixelIndex }) {
   const [pixelColor, setPixelColor] = useState("#fff");
   const [open, setOpen] = useState(false);
@@ -55,17 +57,24 @@ export default function Pixel({ selectedColor, pixelIndex }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography
-            textAlign="center"
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-          >
-            Slot {pixelIndex} is available. <br />
-            Please Sign in or Sign up to post.
-          </Typography>
-          <Auth />
-          {/* <ChildModal /> */}
+          {user ? (
+            <Typography textAlign="center" variant="h6" component="h2">
+              Hello {user.result.name}
+            </Typography>
+          ) : (
+            <>
+              <Typography
+                textAlign="center"
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+              >
+                Slot {pixelIndex} is available. <br />
+                Please Sign in or Sign up to post.
+              </Typography>
+              <Auth />
+            </>
+          )}
         </Box>
       </Modal>
     </>
