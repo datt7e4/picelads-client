@@ -41,7 +41,6 @@ const ResponsiveAppBar = () => {
   };
 
   const handleNavMenu = (page) => {
-    if (user) dispatch(signout());
     navigate(`/${page}`);
     setAnchorElNav(null);
   };

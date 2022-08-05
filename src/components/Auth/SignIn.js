@@ -9,6 +9,8 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+import Icon from "./icon";
+import { GoogleLogin } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signin } from "../../actions/auth";
@@ -25,6 +27,21 @@ function SignIn({ setIsSignup }) {
     dispatch(signin(form, navigate));
   };
 
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+    console.log("success");
+    // try {
+    //   dispatch({ type: AUTH, data: { result, token } });
+
+    //   history.push("/");
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+
+  const googleError = () =>
+    console.log("Google Sign In was unsuccessful. Try again later");
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -69,7 +86,25 @@ function SignIn({ setIsSignup }) {
               setForm({ ...form, password: e.target.value });
             }}
           />
-
+          <GoogleLogin
+            clientId=""
+            render={(renderProps) => (
+              <Button
+                color="primary"
+                fullWidth
+                sx={{ mt: 3 }}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                startIcon={<Icon />}
+                variant="contained"
+              >
+                Google Sign In
+              </Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleError}
+            cookiePolicy="single_host_origin"
+          />
           <Button
             type="submit"
             fullWidth
