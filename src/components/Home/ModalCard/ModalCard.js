@@ -14,8 +14,13 @@ const style = {
   transform: "translate(-50%, -50%)",
   // width: "auto",
   width: 400,
+
+  "@media(max-width: 500px)": {
+    width: "80%",
+  },
   bgcolor: "background.paper",
   p: 4,
+  maxHeight: "60%",
   overflow: "auto",
   outline: "none",
   color: "black",

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
-  CssBaseline,
   TextField,
   Link,
   Grid,
@@ -11,19 +10,34 @@ import {
   Container,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { signup } from "../../actions/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+};
 
 function SignUp({ setIsSignup }) {
-  const handleSubmit = (e) => {};
+  const [form, setForm] = useState(initialState);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signup(form, navigate));
+  };
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 2,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          height: 1050,
+          marginBottom: 5,
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -43,6 +57,9 @@ function SignUp({ setIsSignup }) {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={(e) => {
+                  setForm({ ...form, firstName: e.target.value });
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -53,6 +70,9 @@ function SignUp({ setIsSignup }) {
                 label="Last Name"
                 name="lastName"
                 autoComplete="family-name"
+                onChange={(e) => {
+                  setForm({ ...form, lastName: e.target.value });
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -63,6 +83,9 @@ function SignUp({ setIsSignup }) {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(e) => {
+                  setForm({ ...form, email: e.target.value });
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -74,6 +97,9 @@ function SignUp({ setIsSignup }) {
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                onChange={(e) => {
+                  setForm({ ...form, password: e.target.value });
+                }}
               />
             </Grid>
             <Grid item xs={12}></Grid>

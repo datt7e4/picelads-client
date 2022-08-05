@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { isLoading, scroll } from "./home";
 import { posts } from "./posts";
+import auth from "./auth";
 
-export const reducers = combineReducers({ posts, isLoading, scroll });
+export const reducers = combineReducers({ posts, isLoading, scroll, auth });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Modal, Button, IconButton, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { FACEBOOK_LINK, ZALO_LINK } from "../../../constants/data";
+import SignIn from "../../Auth/SignIn";
 
 const style = {
   position: "absolute",
@@ -27,7 +28,8 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Post Free Now</Button>
+      <Button onClick={handleOpen}>Please Sign In To Post</Button>
+      <SignIn />
       <Modal
         hideBackdrop
         open={open}
@@ -36,32 +38,7 @@ function ChildModal() {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: 200 }}>
-          <h2 id="child-modal-title">Please Contact</h2>
-          <Stack direction="row" justifyContent="center" spacing={1}>
-            <IconButton
-              color="primary"
-              size="medium"
-              target="_blank"
-              href={FACEBOOK_LINK}
-            >
-              <FacebookIcon fontSize="large" />
-            </IconButton>
-            <IconButton size="large" target="_blank" href={ZALO_LINK}>
-              <img alt="Zalo Icon" src="/zalo-icon.png" width={26} />
-            </IconButton>
-            {/* <IconButton
-              color="primary"
-              size="medium"
-              target="_blank"
-              href={INSTA_LINK}
-            >
-              <InstagramIcon fontSize="large" />
-            </IconButton> */}
-          </Stack>
-          <h3 id="child-modal-title" align="center">
-            Or
-          </h3>
-          <img alt="Zalo QR" src="/zalo-qr.jpg" width="100%" />
+          <SignIn />
 
           <Button onClick={handleClose}>Close</Button>
         </Box>

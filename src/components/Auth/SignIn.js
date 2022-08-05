@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
-  CssBaseline,
   TextField,
   Link,
   Grid,
@@ -10,22 +9,31 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signin } from "../../actions/auth";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+const initialState = { email: "", password: "" };
+
 function SignIn({ setIsSignup }) {
-  const handleSubmit = (e) => {};
+  const [form, setForm] = useState(initialState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signin(form, navigate));
+  };
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
-          height: 1050,
+          marginTop: 2,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          marginBottom: 5,
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -44,6 +52,9 @@ function SignIn({ setIsSignup }) {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e) => {
+              setForm({ ...form, email: e.target.value });
+            }}
           />
           <TextField
             margin="normal"
@@ -54,6 +65,9 @@ function SignIn({ setIsSignup }) {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(e) => {
+              setForm({ ...form, password: e.target.value });
+            }}
           />
 
           <Button

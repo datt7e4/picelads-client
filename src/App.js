@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import NavBar from "./components/NavBar/NavBar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Error from "./components/NavBar/Error/Error";
@@ -24,6 +29,8 @@ import "./App.css";
 import Categories from "./components/Categories/Categories";
 import Auth from "./components/Auth/Auth";
 
+const user = JSON.parse(localStorage.getItem("profile"));
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,7 +48,6 @@ function App() {
           <Route path="/home" exact element={<Home />} />
           <Route path="/contact" exact element={<Contact />} />
           <Route path="/categories" exact element={<Categories />} />
-          <Route path="/auth" exact element={<Auth />} />
         </Routes>
       </Router>
       <Footer />

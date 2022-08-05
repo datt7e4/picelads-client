@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Typography, Modal, Box } from "@mui/material";
-import ChildModal from "./ChildModal";
 import BoxHover from "../HoverCard/HoverCard";
 
 import "./styles/pixel.css";
+
+import Auth from "../../Auth/Auth";
 
 const style = {
   position: "absolute",
@@ -11,8 +12,10 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
+  "@media(max-width: 500px)": {
+    width: "80%",
+  },
   bgcolor: "background.paper",
-
   boxShadow: 24,
   p: 4,
 };
@@ -52,10 +55,17 @@ export default function Pixel({ selectedColor, pixelIndex }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Pixel at slot {pixelIndex} is selling.
+          <Typography
+            textAlign="center"
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+          >
+            Slot {pixelIndex} is available. <br />
+            Please Sign in or Sign up to post.
           </Typography>
-          <ChildModal />
+          <Auth />
+          {/* <ChildModal /> */}
         </Box>
       </Modal>
     </>
