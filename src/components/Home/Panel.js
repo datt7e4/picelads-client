@@ -18,8 +18,10 @@ const style = {
   "@media(max-width: 500px)": {
     width: "80%",
   },
+  maxHeight: "60%",
   bgcolor: "background.paper",
   boxShadow: 24,
+  overflow: "auto",
   p: 4,
 };
 const user = JSON.parse(localStorage.getItem("profile"));
