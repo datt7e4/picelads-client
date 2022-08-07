@@ -8,11 +8,13 @@ import {
   Box,
   Typography,
   Container,
+  Divider,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { signup } from "../../actions/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import GoogleSignIn from "./GoogleSignIn";
 
 const initialState = {
   firstName: "",
@@ -108,17 +110,21 @@ function SignUp({ setIsSignup }) {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 2, mb: 2 }}
           >
             Sign Up
           </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2" onClick={() => setIsSignup(true)}>
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+
+          <Box textAlign="center">
+            <Link href="#" variant="body2" onClick={() => setIsSignup(true)}>
+              Already have an account? Sign in
+            </Link>
+          </Box>
+
+          <Typography component="h2" marginTop={2}>
+            <Divider>or</Divider>
+          </Typography>
+          <GoogleSignIn />
         </Box>
       </Box>
     </Container>

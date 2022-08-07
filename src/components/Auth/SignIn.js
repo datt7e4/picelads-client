@@ -8,13 +8,14 @@ import {
   Box,
   Typography,
   Container,
+  Divider,
 } from "@mui/material";
-import Icon from "./icon";
-import { GoogleLogin } from "react-google-login";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signin } from "../../actions/auth";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import GoogleSignIn from "./GoogleSignIn";
 
 const initialState = { email: "", password: "" };
 
@@ -27,21 +28,6 @@ function SignIn({ setIsSignup }) {
     dispatch(signin(form, navigate));
   };
 
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-    console.log("success");
-    // try {
-    //   dispatch({ type: AUTH, data: { result, token } });
-
-    //   history.push("/");
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
-
-  const googleError = () =>
-    console.log("Google Sign In was unsuccessful. Try again later");
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -86,25 +72,7 @@ function SignIn({ setIsSignup }) {
               setForm({ ...form, password: e.target.value });
             }}
           />
-          <GoogleLogin
-            clientId=""
-            render={(renderProps) => (
-              <Button
-                color="primary"
-                fullWidth
-                sx={{ mt: 3 }}
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                startIcon={<Icon />}
-                variant="contained"
-              >
-                Google Sign In
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          />
+
           <Button
             type="submit"
             fullWidth
@@ -113,13 +81,16 @@ function SignIn({ setIsSignup }) {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item>
-              <Link href="#" variant="body2" onClick={() => setIsSignup(false)}>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+          <Box textAlign="center">
+            <Link href="#" variant="body2" onClick={() => setIsSignup(false)}>
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Box>
+
+          <Typography component="h2" marginTop={2}>
+            <Divider>or</Divider>
+          </Typography>
+          <GoogleSignIn />
         </Box>
       </Box>
     </Container>
