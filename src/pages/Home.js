@@ -3,7 +3,7 @@ import React from "react";
 import Hero from "../components/Home/Hero/Hero";
 import { useDispatch } from "react-redux";
 import { updateScrollPostion } from "../actions/home";
-import Posts from "../components/Home/Posts/Posts";
+import Panel from "../components/Home/Panel";
 import { useEffect } from "react";
 
 function Home() {
@@ -25,7 +25,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <Posts />
+      <Panel />
     </>
   );
 }

@@ -1,33 +1,29 @@
 import React, { useState } from "react";
-import { Typography, Modal, Box } from "@mui/material";
-import BoxHover from "../HoverCard/HoverCard";
 
+import BoxHover from "../HoverCard/HoverCard";
+import { OPEN_MODAL } from "../../../constants/errorTypes";
 import "./styles/pixel.css";
 
-import Auth from "../../Auth/Auth";
+import { useDispatch } from "react-redux";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  "@media(max-width: 500px)": {
-    width: "80%",
-  },
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
-
-const user = JSON.parse(localStorage.getItem("profile"));
-
-export default function Pixel({ selectedColor, pixelIndex }) {
+export default function Pixel({
+  selectedColor,
+  pixelIndex,
+  posX,
+  posY,
+  setData,
+}) {
+  const dispatch = useDispatch();
   const [pixelColor, setPixelColor] = useState("#fff");
-  const [open, setOpen] = useState(false);
   const [openHover, setOpenHover] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setData({
+      posX: (posX - 1) * 10,
+      posY: (posY - 1) * 10,
+      pixelIndex: pixelIndex,
+    });
+    dispatch({ type: OPEN_MODAL });
+  };
 
   function changeColorOnHover() {
     setPixelColor(selectedColor);
@@ -49,34 +45,6 @@ export default function Pixel({ selectedColor, pixelIndex }) {
         onMouseLeave={resetColor}
         style={{ backgroundColor: pixelColor }}
       ></div>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          {user ? (
-            <Typography textAlign="center" variant="h6" component="h2">
-              Hello {user.result.name}
-            </Typography>
-          ) : (
-            <>
-              <Typography
-                textAlign="center"
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-              >
-                Slot {pixelIndex} is available. <br />
-                Please Sign in or Sign up to post.
-              </Typography>
-              <Auth />
-            </>
-          )}
-        </Box>
-      </Modal>
     </>
   );
 }

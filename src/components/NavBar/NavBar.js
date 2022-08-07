@@ -41,7 +41,10 @@ const ResponsiveAppBar = () => {
   };
 
   const handleNavMenu = (page) => {
-    navigate(`/${page}`);
+    //this is to solve the menu icon close bug, since close outside of
+    //a button will get error 404
+    if (typeof page === "string" || page instanceof String)
+      navigate(`/${page}`);
     setAnchorElNav(null);
   };
 
@@ -73,7 +76,6 @@ const ResponsiveAppBar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <a href="/">
             <img src="One-Garlic-logos_white.png" width="100" />
           </a>
