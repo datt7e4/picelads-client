@@ -77,7 +77,7 @@ function Panel() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {user ? (
+        {user || post ? (
           personalSelected === "personal" || !post ? (
             <Box sx={formStyle}>
               <Typography textAlign="center" variant="h6" component="h2">
