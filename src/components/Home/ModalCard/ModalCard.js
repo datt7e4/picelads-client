@@ -48,14 +48,6 @@ function ModalCard({ post, personalSelected }) {
     setOpenHover(false);
   };
 
-  const postsVisibility = () => {
-    if (user?.result._id !== post?.creator && personalSelected === "personal")
-      return "hidden";
-    if (user?.result.sub !== post?.creator && personalSelected === "personal")
-      return "hidden";
-    return "visible";
-  };
-
   return (
     <div>
       {openHover && (
