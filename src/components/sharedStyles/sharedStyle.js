@@ -7,7 +7,7 @@ export const boxStyle = {
     display: "none",
   },
   position: "absolute",
-  top: -210,
+  top: -250,
   left: 535,
   zIndex: 1,
   p: 1,

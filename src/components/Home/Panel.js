@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Paper, Modal, Box, Typography } from "@mui/material";
+import { Paper, Modal, Box, Typography, Stack } from "@mui/material";
 import { CLEAR_ERROR, CLOSE_MODAL } from "../../constants/errorTypes";
 import { useDispatch, useSelector } from "react-redux";
 
 import Form from "../Form/Form";
 import PixelsPanel from "./PixelsPanel/PixelsPanel";
-import "./Posts/Posts.css";
 import Posts from "./Posts/Posts";
 import Auth from "../Auth/Auth";
+import UseRadioGroup from "./RadioButtonsGroup";
+
+import "./Panel.css";
 
 const style = {
   position: "absolute",
@@ -32,6 +34,7 @@ function Panel() {
   const panelHeight = 100;
   const selectedColor = "black";
   const [data, setData] = useState(clearData);
+  const [personalSelected, setPerSelected] = useState("");
   const [currentId, setCurrentId] = useState(0);
   const { openModal } = useSelector((state) => state.errors);
 
@@ -44,17 +47,22 @@ function Panel() {
 
   return (
     <div className="panel-container">
-      <Paper elevation={4}>
-        <div className="panel">
-          <Posts />
-          <PixelsPanel
-            width={panelWidth}
-            height={panelHeight}
-            selectedColor={selectedColor}
-            setData={setData}
-          />
-        </div>
-      </Paper>
+      <Stack>
+        {console.log(personalSelected)}
+        <UseRadioGroup setPerSelected={setPerSelected} />
+        <Paper elevation={4}>
+          <div className="panel">
+            <Posts personalSelected={personalSelected} />
+            <PixelsPanel
+              width={panelWidth}
+              height={panelHeight}
+              selectedColor={selectedColor}
+              setData={setData}
+            />
+          </div>
+        </Paper>
+      </Stack>
+
       <Modal
         open={openModal}
         onClose={handleClose}
@@ -80,9 +88,10 @@ function Panel() {
                 id="modal-modal-title"
                 variant="h6"
                 component="h2"
+                fontWeight="bold"
               >
                 Slot {data.pixelIndex} is available. <br />
-                Please Sign in or Sign up to post.
+                Please sign in or sign up to post.
               </Typography>
               <Auth />
             </>

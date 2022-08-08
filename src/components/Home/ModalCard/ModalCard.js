@@ -7,6 +7,8 @@ import "./ModalCard.css";
 
 import HoverCard from "../HoverCard/HoverCard";
 
+const user = JSON.parse(localStorage.getItem("profile"));
+
 const style = {
   position: "absolute",
   top: "45%",
@@ -26,7 +28,7 @@ const style = {
   color: "black",
 };
 
-function ModalCard({ post }) {
+function ModalCard({ post, personalSelected }) {
   const [open, setOpen] = useState(false);
   const [openHover, setOpenHover] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -53,6 +55,7 @@ function ModalCard({ post }) {
           <HoverCard post={post} />
         </div>
       )}
+
       <img
         src={`${process.env.REACT_APP_API}/${post.selectedFile}`}
         alt={post.companyName}
@@ -64,6 +67,13 @@ function ModalCard({ post }) {
           //------UI #1--------
           objectFit: "cover",
 
+          //only hidden if personalSelected === personal and (_id or sub != creator)
+          visibility:
+            (user?.result._id !== post?.creator ||
+              user?.result.sub !== post?.creator) &&
+            personalSelected === "personal"
+              ? "hidden"
+              : "visible",
           //------UI #2--------
           // objectFit: "contain",
           // backgroundColor: "#001529",
