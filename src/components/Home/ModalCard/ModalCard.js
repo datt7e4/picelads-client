@@ -1,43 +1,27 @@
 import React, { useState } from "react";
-import { Modal, Box, Typography, Grid, IconButton } from "@mui/material";
-import LinkIcon from "@mui/icons-material/Link";
-import PhoneIcon from "@mui/icons-material/Phone";
 
 import "./ModalCard.css";
 
 import HoverCard from "../HoverCard/HoverCard";
+import { useDispatch } from "react-redux";
+import { OPEN_MODAL } from "../../../constants/errorTypes";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 
-const style = {
-  position: "absolute",
-  top: "45%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  // width: "auto",
-  width: 400,
-
-  "@media(max-width: 500px)": {
-    width: "80%",
-  },
-  bgcolor: "background.paper",
-  p: 4,
-  maxHeight: "60%",
-  overflow: "auto",
-  outline: "none",
-  color: "black",
-};
-
-function ModalCard({ post, personalSelected }) {
-  const [open, setOpen] = useState(false);
+function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
   const [openHover, setOpenHover] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
 
   const handleClick = (id) => {
     // setId(id);
-    setOpen(true);
+    //setPost(post);
+    setPost(post);
+    setCurrentId(id);
+    console.log(id);
+    // setOpen(true);
+
+    dispatch({ type: OPEN_MODAL });
   };
 
   const handleEnter = () => {
@@ -84,70 +68,6 @@ function ModalCard({ post, personalSelected }) {
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
       />
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={{ ...style, border: 0, padding: 0 }}>
-          <Grid container>
-            <Grid item={true} xs={12}>
-              <img
-                alt={post.companyName}
-                src={`${process.env.REACT_APP_API}/${post.selectedFile}`}
-                style={{
-                  height: "300px",
-                  width: "100%",
-                  objectFit: "cover",
-                  display: isLoaded ? "none" : "block",
-                }}
-              />
-              <img
-                alt={post.companyName}
-                src={`${process.env.REACT_APP_API}/${post.coverImageOriginal}`}
-                onLoad={() => {
-                  setIsLoaded(true);
-                }}
-                style={{
-                  // height: "100%",
-                  width: "100%",
-                  objectFit: "contain",
-                  display: isLoaded ? "block" : "none",
-                }}
-              />
-            </Grid>
-            <Grid item={true} xs={12} style={{ padding: 20 }}>
-              <div className="title">
-                <Typography fontWeight="bold" variant="h5">
-                  {post.companyName}
-                </Typography>
-                {post.companyLink && (
-                  <IconButton
-                    target="_blank"
-                    color="primary"
-                    size="small"
-                    href={`${post.companyLink}`}
-                  >
-                    <LinkIcon fontSize="large" />
-                  </IconButton>
-                )}
-              </div>
-              {post.companyPhone && (
-                <div className="phone-flex">
-                  <IconButton size="small" href={`tel:${post.companyPhone}`}>
-                    <PhoneIcon />
-                  </IconButton>
-                  <Typography fontSize={14}>{post.companyPhone}</Typography>
-                </div>
-              )}
-              <Typography marginTop={2} variant="body1" component="h2">
-                {post.desc}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-      </Modal>
     </div>
   );
 }
