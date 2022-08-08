@@ -7,11 +7,12 @@ import Form from "../Form/Form";
 import PixelsPanel from "./PixelsPanel/PixelsPanel";
 import Posts from "./Posts/Posts";
 import Auth from "../Auth/Auth";
-import UseRadioGroup from "./RadioButtonsGroup";
+import RadioButtonsGroup from "./RadioButtonsGroup";
 
 import "./Panel.css";
+import ModalView from "./ModalView";
 
-const style = {
+const formStyle = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -26,6 +27,7 @@ const style = {
   overflow: "auto",
   p: 4,
 };
+
 const user = JSON.parse(localStorage.getItem("profile"));
 const clearData = { posX: "", posY: "", pixelIndex: "" };
 
@@ -36,11 +38,14 @@ function Panel() {
   const [data, setData] = useState(clearData);
   const [personalSelected, setPerSelected] = useState("");
   const [currentId, setCurrentId] = useState(0);
+  const [post, setPost] = useState(null);
+
   const { openModal } = useSelector((state) => state.errors);
 
   const dispatch = useDispatch();
   const handleClose = () => {
     setCurrentId(0);
+    setPost(null);
     dispatch({ type: CLOSE_MODAL });
     dispatch({ type: CLEAR_ERROR });
   };
@@ -48,11 +53,14 @@ function Panel() {
   return (
     <div className="panel-container">
       <Stack>
-        {console.log(personalSelected)}
-        <UseRadioGroup setPerSelected={setPerSelected} />
+        <RadioButtonsGroup setPerSelected={setPerSelected} />
         <Paper elevation={4}>
           <div className="panel">
-            <Posts personalSelected={personalSelected} />
+            <Posts
+              setCurrentId={setCurrentId}
+              personalSelected={personalSelected}
+              setPost={setPost}
+            />
             <PixelsPanel
               width={panelWidth}
               height={panelHeight}
@@ -69,34 +77,38 @@ function Panel() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          {user ? (
-            <Typography textAlign="center" variant="h6" component="h2">
-              Hello {user.result.name}
-              <Form
-                posX={data.posX}
-                posY={data.posY}
-                currentId={currentId}
-                setCurrentId={setCurrentId}
-                pixelIndex={data.pixelIndex}
-              />
-            </Typography>
-          ) : (
-            <>
-              <Typography
-                textAlign="center"
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                fontWeight="bold"
-              >
-                Slot {data.pixelIndex} is available. <br />
-                Please sign in or sign up to post.
+        {user ? (
+          personalSelected === "personal" || !post ? (
+            <Box sx={formStyle}>
+              <Typography textAlign="center" variant="h6" component="h2">
+                Hello {user.result.name}
+                <Form
+                  posX={data.posX}
+                  posY={data.posY}
+                  currentId={currentId}
+                  setCurrentId={setCurrentId}
+                  pixelIndex={data.pixelIndex}
+                />
               </Typography>
-              <Auth />
-            </>
-          )}
-        </Box>
+            </Box>
+          ) : (
+            <ModalView post={post} />
+          )
+        ) : (
+          <Box sx={formStyle}>
+            <Typography
+              textAlign="center"
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+              fontWeight="bold"
+            >
+              Slot {data.pixelIndex} is available. <br />
+              Please sign in or sign up to post.
+            </Typography>
+            <Auth />
+          </Box>
+        )}
       </Modal>
     </div>
   );

@@ -8,6 +8,7 @@ const user = JSON.parse(localStorage.getItem("profile"));
 const dis = !user ? true : false;
 export default function RadioButtonsGroup({ setPerSelected }) {
   const handleChange = (e) => {
+    // setCurrentId(0);
     setPerSelected(e.target.value);
   };
   return (
