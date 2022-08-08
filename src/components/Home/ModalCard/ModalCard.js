@@ -67,13 +67,13 @@ function ModalCard({ post, personalSelected }) {
           //------UI #1--------
           objectFit: "cover",
 
-          //only hidden if personalSelected === personal and (_id or sub != creator)
+          //only visible if personalSelected !== personal || (_id == creator xor sub == creator)
           visibility:
-            (user?.result._id !== post?.creator ||
-              user?.result.sub !== post?.creator) &&
-            personalSelected === "personal"
-              ? "hidden"
-              : "visible",
+            (user?.result._id !== post?.creator) ^
+              (user?.result.sub !== post?.creator) ||
+            personalSelected !== "personal"
+              ? "visible"
+              : "hidden",
           //------UI #2--------
           // objectFit: "contain",
           // backgroundColor: "#001529",
