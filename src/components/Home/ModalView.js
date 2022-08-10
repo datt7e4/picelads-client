@@ -38,14 +38,17 @@ const scroll = {
   //   width: 300,
   // },
 
+  "@media(max-width: 1050px)": {
+    maxHeight: 600,
+  },
   "@media(max-width: 1000px)": {
+    width: 700,
+  },
+  "@media(max-width: 800px)": {
     width: 500,
   },
   "@media(max-width: 600px)": {
-    width: 400,
-  },
-  "@media(max-width: 500px)": {
-    width: 400,
+    width: 350,
   },
   width: 800,
   maxHeight: 800,
