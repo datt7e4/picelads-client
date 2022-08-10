@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid, IconButton, Typography, Box } from "@mui/material";
 import LinkIcon from "@mui/icons-material/Link";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { BACKGROUND_COLOR } from "../../constants/data";
 
 // const style = {
 //   position: "absolute",
@@ -39,11 +40,10 @@ const scroll = {
   // },
 
   "@media(max-width: 1050px)": {
-    maxHeight: 600,
-  },
-  "@media(max-width: 1000px)": {
+    maxHeight: 500,
     width: 700,
   },
+
   "@media(max-width: 800px)": {
     width: 500,
   },
@@ -88,12 +88,11 @@ function ModalView({ post }) {
                   height: "500px",
                 },
                 width: "100%",
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
 
                 objectFit: "contain",
-                // background: "#001529",
-                background: "black",
+                background: BACKGROUND_COLOR,
                 display: isLoaded ? "block" : "none",
               }}
             />

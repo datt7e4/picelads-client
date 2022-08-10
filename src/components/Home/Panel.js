@@ -39,13 +39,14 @@ const box = {
   padding: "10px 2px",
 };
 const scroll = {
-  width: 500,
+  "@media(max-width: 1050px)": {
+    maxHeight: 500,
+    width: 500,
+  },
   "@media(max-width: 600px)": {
-    width: 400,
+    width: 350,
   },
-  "@media(max-width: 500px)": {
-    width: 300,
-  },
+  width: 500,
   maxHeight: 800,
   bgcolor: "background.paper",
   overflow: "auto",

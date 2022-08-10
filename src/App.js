@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import Error from "./components/NavBar/Error/Error";
 import Home from "./pages/Home";
 import Contact from "./components/Contact/Contact";
-
+import { BACKGROUND_COLOR } from "./constants/data";
 import { IconButton, Typography, Link } from "@mui/material";
 import {
   FACEBOOK_LINK,
@@ -58,7 +58,7 @@ function App() {
 export default App;
 function Footer() {
   return (
-    <div className="footer">
+    <div className="footer" style={{ backgroundColor: BACKGROUND_COLOR }}>
       <Typography fontSize={18}>
         {"Inspired by "}
         <Link color="inherit" href={`http://www.milliondollarhomepage.com/`}>

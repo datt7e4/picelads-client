@@ -18,6 +18,7 @@ import { signout } from "../../actions/auth";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SignInButton from "./SignInButton";
+import { BACKGROUND_COLOR } from "../../constants/data";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -68,7 +69,7 @@ const ResponsiveAppBar = () => {
       position="static"
       sx={{
         // #001529, #E2E2E2
-        background: "black",
+        background: BACKGROUND_COLOR,
         "@media (max-width: 1048px)": {
           width: "1048px",
         },

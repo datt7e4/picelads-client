@@ -8,8 +8,6 @@ html {
 }
 
 .footer {
-  /* background-color: #001529; */
-  background-color: black;
   color: white;
   display: flex;
   flex-direction: column;
