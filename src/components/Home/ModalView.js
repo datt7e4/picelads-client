@@ -39,7 +39,7 @@ const scroll = {
   //   width: 300,
   // },
 
-  "@media(max-width: 1050px)": {
+  "@media(max-width: 1400px)": {
     maxHeight: 500,
     width: 700,
   },
@@ -88,9 +88,7 @@ function ModalView({ post }) {
                   height: "500px",
                 },
                 width: "100%",
-                borderTopLeftRadius: "10px",
-                borderTopRightRadius: "10px",
-
+                borderRadius: "10px",
                 objectFit: "contain",
                 background: BACKGROUND_COLOR,
                 display: isLoaded ? "block" : "none",
