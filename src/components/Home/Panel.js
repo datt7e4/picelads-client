@@ -39,8 +39,8 @@ const box = {
   padding: "10px 2px",
 };
 const scroll = {
-  "@media(max-width: 1050px)": {
-    maxHeight: 500,
+  "@media(max-width: 1400px)": {
+    maxHeight: 600,
     width: 500,
   },
   "@media(max-width: 600px)": {

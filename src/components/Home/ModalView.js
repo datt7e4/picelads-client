@@ -40,7 +40,7 @@ const scroll = {
   // },
 
   "@media(max-width: 1400px)": {
-    maxHeight: 500,
+    maxHeight: 600,
     width: 700,
   },
 
