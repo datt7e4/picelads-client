@@ -7,8 +7,8 @@ import AvailableSlot from "./ContentView";
 function BoxHover({ pixelIndex, post }) {
   const imageStyle = {
     borderRadius: 5,
-    backgroundColor: "#001529",
-    // backgroundColor: "gray",
+    // backgroundColor: "#001529",
+    backgroundColor: "black",
     height: 130,
     width: 130,
     objectFit: "contain",

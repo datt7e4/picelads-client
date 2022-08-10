@@ -68,7 +68,7 @@ const ResponsiveAppBar = () => {
       position="static"
       sx={{
         // #001529, #E2E2E2
-        background: "#001529",
+        background: "black",
         "@media (max-width: 1048px)": {
           width: "1048px",
         },

@@ -14,13 +14,8 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
   const dispatch = useDispatch();
 
   const handleClick = (id) => {
-    // setId(id);
-    //setPost(post);
     setPost(post);
     setCurrentId(id);
-    console.log(id);
-    // setOpen(true);
-
     dispatch({ type: OPEN_MODAL });
   };
 
@@ -33,7 +28,7 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
   };
 
   return (
-    <div>
+    <>
       {openHover && (
         <div sx={{ position: "absolute" }}>
           <HoverCard post={post} />
@@ -43,13 +38,18 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
       <img
         src={`${process.env.REACT_APP_API}/${post.selectedFile}`}
         alt={post.companyName}
+        width={post.postWidth}
+        height={post.postHeight}
         style={{
           position: "absolute",
           left: post.posX,
           top: post.posY,
           cursor: "pointer",
+          //------UI #2--------
+          // objectFit: "contain",
+          // backgroundColor: "black",
           //------UI #1--------
-          objectFit: "cover",
+          //objectFit: "contain",
 
           //only visible if personalSelected !== personal || (_id == creator xor sub == creator)
           visibility:
@@ -58,17 +58,12 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
             personalSelected !== "personal"
               ? "visible"
               : "hidden",
-          //------UI #2--------
-          // objectFit: "contain",
-          // backgroundColor: "#001529",
         }}
-        width={post.postWidth}
-        height={post.postHeight}
         onClick={() => handleClick(post._id)}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
       />
-    </div>
+    </>
   );
 }
 

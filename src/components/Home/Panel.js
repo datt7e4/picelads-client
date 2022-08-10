@@ -12,20 +12,44 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import "./Panel.css";
 import ModalView from "./ModalView";
 
-const formStyle = {
+// const formStyle = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   "@media(max-width: 500px)": {
+//     width: "80%",
+//   },
+//   maxHeight: "60%",
+//   bgcolor: "background.paper",
+//   boxShadow: 24,
+//   overflow: "auto",
+//   p: 4,
+//   borderRadius: 5,
+// };
+
+const box = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  "@media(max-width: 500px)": {
-    width: "80%",
-  },
-  maxHeight: "60%",
   bgcolor: "background.paper",
-  boxShadow: 24,
+  borderRadius: "10px",
+  padding: "10px 2px",
+};
+const scroll = {
+  width: 500,
+  "@media(max-width: 600px)": {
+    width: 400,
+  },
+  "@media(max-width: 500px)": {
+    width: 300,
+  },
+  maxHeight: 800,
+  bgcolor: "background.paper",
   overflow: "auto",
-  p: 4,
+  padding: 5,
 };
 
 const user = JSON.parse(localStorage.getItem("profile"));
@@ -79,34 +103,38 @@ function Panel() {
       >
         {user || post ? (
           personalSelected === "personal" || !post ? (
-            <Box sx={formStyle}>
-              <Typography textAlign="center" variant="h6" component="h2">
-                Hello {user.result.name}
-                <Form
-                  posX={data.posX}
-                  posY={data.posY}
-                  currentId={currentId}
-                  setCurrentId={setCurrentId}
-                  pixelIndex={data.pixelIndex}
-                />
-              </Typography>
+            <Box sx={box}>
+              <Box sx={scroll}>
+                <Typography textAlign="center" variant="h6" component="h2">
+                  Hello {user.result.name}
+                  <Form
+                    posX={data.posX}
+                    posY={data.posY}
+                    currentId={currentId}
+                    setCurrentId={setCurrentId}
+                    pixelIndex={data.pixelIndex}
+                  />
+                </Typography>
+              </Box>
             </Box>
           ) : (
             <ModalView post={post} />
           )
         ) : (
-          <Box sx={formStyle}>
-            <Typography
-              textAlign="center"
-              id="modal-modal-title"
-              variant="h6"
-              component="h2"
-              fontWeight="bold"
-            >
-              Slot {data.pixelIndex} is available. <br />
-              Please sign in or sign up to post.
-            </Typography>
-            <Auth />
+          <Box sx={box}>
+            <Box sx={scroll}>
+              <Typography
+                textAlign="center"
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+                fontWeight="bold"
+              >
+                Slot {data.pixelIndex} is available. <br />
+                Please sign in or sign up to post.
+              </Typography>
+              <Auth />
+            </Box>
           </Box>
         )}
       </Modal>
