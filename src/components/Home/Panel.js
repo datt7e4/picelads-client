@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paper, Modal, Box, Typography, Stack } from "@mui/material";
+import { Paper, Modal, Box, Typography, Container } from "@mui/material";
 import { CLEAR_ERROR, CLOSE_MODAL } from "../../constants/errorTypes";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,10 +8,10 @@ import PixelsPanel from "./PixelsPanel/PixelsPanel";
 import Posts from "./Posts/Posts";
 import Auth from "../Auth/Auth";
 import RadioButtonsGroup from "./RadioButtonsGroup";
-
-import "./Panel.css";
-import ModalView from "./ModalView";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
+
+import ModalView from "./ModalView";
+import "./Panel.css";
 
 // const formStyle = {
 //   position: "absolute",
@@ -81,29 +81,27 @@ function Panel() {
   };
 
   return (
-    <div className="panel-container">
-      <Stack>
-        <RadioButtonsGroup setPerSelected={setPerSelected} />
-        <Paper elevation={4}>
+    <Container maxWidth="xl">
+      <RadioButtonsGroup setPerSelected={setPerSelected} />
+      <div className="panel-container">
+        <Paper elevation={4} className="panel">
           <TransformWrapper>
             <TransformComponent>
-              <div className="panel">
-                <Posts
-                  setCurrentId={setCurrentId}
-                  personalSelected={personalSelected}
-                  setPost={setPost}
-                />
-                <PixelsPanel
-                  width={panelWidth}
-                  height={panelHeight}
-                  selectedColor={selectedColor}
-                  setData={setData}
-                />
-              </div>
+              <Posts
+                setCurrentId={setCurrentId}
+                personalSelected={personalSelected}
+                setPost={setPost}
+              />
+              <PixelsPanel
+                width={panelWidth}
+                height={panelHeight}
+                selectedColor={selectedColor}
+                setData={setData}
+              />
             </TransformComponent>
           </TransformWrapper>
         </Paper>
-      </Stack>
+      </div>
 
       <Modal
         open={openModal}
@@ -148,7 +146,7 @@ function Panel() {
           </Box>
         )}
       </Modal>
-    </div>
+    </Container>
   );
 }
 

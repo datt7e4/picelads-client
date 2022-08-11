@@ -70,9 +70,6 @@ const ResponsiveAppBar = () => {
       sx={{
         // #001529, #E2E2E2
         background: BACKGROUND_COLOR,
-        "@media (max-width: 1048px)": {
-          width: "1048px",
-        },
       }}
     >
       <Container maxWidth="xl">

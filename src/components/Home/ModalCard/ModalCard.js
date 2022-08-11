@@ -36,7 +36,6 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
       )}
 
       <img
-        // className="image-scale"
         src={`${process.env.REACT_APP_API}/${post.selectedFile}`}
         alt={post.companyName}
         width={post.postWidth}

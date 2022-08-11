@@ -20,9 +20,3 @@ html {
   align-items: center;
   margin-bottom: 50px;
 }
-
-@media only screen and (max-width: 1048px) {
-  .footer {
-    width: 1008px;
-  }
-}
