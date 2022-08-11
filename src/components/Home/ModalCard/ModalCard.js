@@ -36,6 +36,7 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
       )}
 
       <img
+        // className="image-scale"
         src={`${process.env.REACT_APP_API}/${post.selectedFile}`}
         alt={post.companyName}
         width={post.postWidth}
@@ -45,6 +46,7 @@ function ModalCard({ post, personalSelected, setCurrentId, setPost }) {
           left: post.posX,
           top: post.posY,
           cursor: "pointer",
+          //These UIs will not make any different because the image already crop to the right size
           //------UI #2--------
           // objectFit: "contain",
           // backgroundColor: "black",

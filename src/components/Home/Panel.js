@@ -11,6 +11,7 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 
 import "./Panel.css";
 import ModalView from "./ModalView";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 // const formStyle = {
 //   position: "absolute",
@@ -84,19 +85,23 @@ function Panel() {
       <Stack>
         <RadioButtonsGroup setPerSelected={setPerSelected} />
         <Paper elevation={4}>
-          <div className="panel">
-            <Posts
-              setCurrentId={setCurrentId}
-              personalSelected={personalSelected}
-              setPost={setPost}
-            />
-            <PixelsPanel
-              width={panelWidth}
-              height={panelHeight}
-              selectedColor={selectedColor}
-              setData={setData}
-            />
-          </div>
+          <TransformWrapper>
+            <TransformComponent>
+              <div className="panel">
+                <Posts
+                  setCurrentId={setCurrentId}
+                  personalSelected={personalSelected}
+                  setPost={setPost}
+                />
+                <PixelsPanel
+                  width={panelWidth}
+                  height={panelHeight}
+                  selectedColor={selectedColor}
+                  setData={setData}
+                />
+              </div>
+            </TransformComponent>
+          </TransformWrapper>
         </Paper>
       </Stack>
 
