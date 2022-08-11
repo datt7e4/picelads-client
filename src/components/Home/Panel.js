@@ -41,16 +41,20 @@ const box = {
 const scroll = {
   "@media(max-width: 1400px)": {
     maxHeight: 600,
-    width: 500,
+    width: 450,
   },
   "@media(max-width: 600px)": {
-    width: 350,
+    width: 400,
   },
+  "@media(max-width: 500px)": {
+    width: 300,
+  },
+
   width: 500,
   maxHeight: 800,
   bgcolor: "background.paper",
   overflow: "auto",
-  padding: 5,
+  padding: 4,
 };
 
 const user = JSON.parse(localStorage.getItem("profile"));
