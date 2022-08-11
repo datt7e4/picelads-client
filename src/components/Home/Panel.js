@@ -8,7 +8,7 @@ import PixelsPanel from "./PixelsPanel/PixelsPanel";
 import Posts from "./Posts/Posts";
 import Auth from "../Auth/Auth";
 import RadioButtonsGroup from "./RadioButtonsGroup";
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
+// import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 import ModalView from "./ModalView";
 import "./Panel.css";
@@ -85,21 +85,21 @@ function Panel() {
       <RadioButtonsGroup setPerSelected={setPerSelected} />
       <div className="panel-container">
         <Paper elevation={4} className="panel">
-          <TransformWrapper>
-            <TransformComponent>
-              <Posts
-                setCurrentId={setCurrentId}
-                personalSelected={personalSelected}
-                setPost={setPost}
-              />
-              <PixelsPanel
-                width={panelWidth}
-                height={panelHeight}
-                selectedColor={selectedColor}
-                setData={setData}
-              />
-            </TransformComponent>
-          </TransformWrapper>
+          {/* <TransformWrapper>
+            <TransformComponent> */}
+          <Posts
+            setCurrentId={setCurrentId}
+            personalSelected={personalSelected}
+            setPost={setPost}
+          />
+          <PixelsPanel
+            width={panelWidth}
+            height={panelHeight}
+            selectedColor={selectedColor}
+            setData={setData}
+          />
+          {/* </TransformComponent>
+          </TransformWrapper> */}
         </Paper>
       </div>
 
