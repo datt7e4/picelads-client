@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { Paper, Modal, Box, Typography, Container } from "@mui/material";
+import {
+  Paper,
+  Modal,
+  Box,
+  Typography,
+  Container,
+  IconButton,
+  Stack,
+} from "@mui/material";
 import { CLEAR_ERROR, CLOSE_MODAL } from "../../constants/errorTypes";
 import { useDispatch, useSelector } from "react-redux";
-
+import CloseIcon from "@mui/icons-material/Close";
 import Form from "../Form/Form";
 import PixelsPanel from "./PixelsPanel/PixelsPanel";
 import Posts from "./Posts/Posts";
@@ -113,6 +121,12 @@ function Panel() {
           personalSelected === "personal" || !post ? (
             <Box sx={box}>
               <Box sx={scroll}>
+                <Stack alignItems={"flex-end"}>
+                  <IconButton aria-label="close" onClick={handleClose}>
+                    <CloseIcon fontSize="large" />
+                  </IconButton>
+                </Stack>
+
                 <Typography textAlign="center" variant="h6" component="h2">
                   Hello {user.result.name}
                   <Form
@@ -131,6 +145,11 @@ function Panel() {
         ) : (
           <Box sx={box}>
             <Box sx={scroll}>
+              <Stack alignItems={"flex-end"}>
+                <IconButton aria-label="close" onClick={handleClose}>
+                  <CloseIcon fontSize="large" />
+                </IconButton>
+              </Stack>
               <Typography
                 textAlign="center"
                 id="modal-modal-title"

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Button, Modal, Box } from "@mui/material";
+import { Button, Modal, Box, IconButton, Stack } from "@mui/material";
 import Auth from "../Auth/Auth";
+import CloseIcon from "@mui/icons-material/Close";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -48,7 +50,13 @@ function SignInButton() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Auth />
+          <Stack alignItems={"flex-end"}>
+            <IconButton aria-label="close" onClick={handleClose}>
+              <CloseIcon fontSize="large" />
+            </IconButton>
+            <Auth />
+          </Stack>
+
           {/* <ChildModal /> */}
         </Box>
       </Modal>

@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Grid, IconButton, Typography, Box } from "@mui/material";
 import LinkIcon from "@mui/icons-material/Link";
 import PhoneIcon from "@mui/icons-material/Phone";
+import CloseIcon from "@mui/icons-material/Close";
 import { BACKGROUND_COLOR } from "../../constants/data";
+import { useDispatch } from "react-redux";
+import { CLOSE_MODAL } from "../../constants/errorTypes";
 
 // const style = {
 //   position: "absolute",
@@ -59,12 +62,24 @@ const scroll = {
 
 function ModalView({ post }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch({ type: CLOSE_MODAL });
+  };
 
   return (
     <Box sx={box}>
       <Box sx={scroll}>
         <Grid container>
           <Grid item={true} xs={12}>
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              style={{ float: "right" }}
+            >
+              <CloseIcon fontSize="large" />
+            </IconButton>
             <img
               alt={post.companyName}
               src={`${process.env.REACT_APP_API}/${post.selectedFile}`}
@@ -72,6 +87,7 @@ function ModalView({ post }) {
                 height: "400px",
                 width: "100%",
                 objectFit: "cover",
+                borderRadius: "10px",
                 display: isLoaded ? "none" : "block",
               }}
             />
@@ -84,9 +100,6 @@ function ModalView({ post }) {
               }}
               style={{
                 height: "400px",
-                "@media(max-width: 1000px)": {
-                  height: "500px",
-                },
                 width: "100%",
                 borderRadius: "10px",
                 objectFit: "contain",
