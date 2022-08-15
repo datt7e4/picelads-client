@@ -4,8 +4,6 @@ import LinkIcon from "@mui/icons-material/Link";
 import PhoneIcon from "@mui/icons-material/Phone";
 import CloseIcon from "@mui/icons-material/Close";
 import { BACKGROUND_COLOR } from "../../constants/data";
-import { useDispatch } from "react-redux";
-import { CLOSE_MODAL } from "../../constants/errorTypes";
 
 // const style = {
 //   position: "absolute",
@@ -60,26 +58,21 @@ const scroll = {
   padding: 1,
 };
 
-function ModalView({ post }) {
+function ModalView({ post, handleClose }) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const dispatch = useDispatch();
-
-  const handleClose = () => {
-    dispatch({ type: CLOSE_MODAL });
-  };
 
   return (
     <Box sx={box}>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        // style={{ float: "right" }}
+      >
+        <CloseIcon fontSize="large" />
+      </IconButton>
       <Box sx={scroll}>
         <Grid container>
           <Grid item={true} xs={12}>
-            <IconButton
-              aria-label="close"
-              onClick={handleClose}
-              style={{ float: "right" }}
-            >
-              <CloseIcon fontSize="large" />
-            </IconButton>
             <img
               alt={post.companyName}
               src={`${process.env.REACT_APP_API}/${post.selectedFile}`}

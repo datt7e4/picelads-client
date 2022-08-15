@@ -120,13 +120,10 @@ function Panel() {
         {user || post ? (
           personalSelected === "personal" || !post ? (
             <Box sx={box}>
+              <IconButton aria-label="close" onClick={handleClose}>
+                <CloseIcon fontSize="large" />
+              </IconButton>
               <Box sx={scroll}>
-                <Stack alignItems={"flex-end"}>
-                  <IconButton aria-label="close" onClick={handleClose}>
-                    <CloseIcon fontSize="large" />
-                  </IconButton>
-                </Stack>
-
                 <Typography textAlign="center" variant="h6" component="h2">
                   Hello {user.result.name}
                   <Form
@@ -140,16 +137,14 @@ function Panel() {
               </Box>
             </Box>
           ) : (
-            <ModalView post={post} />
+            <ModalView post={post} handleClose={handleClose} />
           )
         ) : (
           <Box sx={box}>
+            <IconButton aria-label="close" onClick={handleClose}>
+              <CloseIcon fontSize="large" />
+            </IconButton>
             <Box sx={scroll}>
-              <Stack alignItems={"flex-end"}>
-                <IconButton aria-label="close" onClick={handleClose}>
-                  <CloseIcon fontSize="large" />
-                </IconButton>
-              </Stack>
               <Typography
                 textAlign="center"
                 id="modal-modal-title"
