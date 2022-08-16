@@ -6,15 +6,14 @@ import {
   DELETE,
   UPDATE,
   CREATE,
-} from "../constants/actionTypes";
-import { CLEAR_ERROR, CLOSE_MODAL, ERROR } from "../constants/errorTypes.js";
-import * as api from "../api/index.js";
+} from "../../constants/actionTypes";
+import { CLEAR_ERROR, CLOSE_MODAL, ERROR } from "../../constants/errorTypes.js";
+import * as api from "../../api/index.js";
 
-const ORIGINAL = process.env.REACT_APP_ORIGINAL_ID;
-export const getPosts = () => async (dispatch) => {
+export const getPostsByPanel = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    const { data } = await api.fetchPostsByPanel(ORIGINAL);
+    const { data } = await api.fetchPostsByPanel(id);
     dispatch({ type: FETCH_ALL, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {

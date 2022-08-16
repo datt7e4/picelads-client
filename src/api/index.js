@@ -24,5 +24,10 @@ export const updatePost = (id, updatedPost) =>
   API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
+export const fetchPanelByCategory = (searchQuery) =>
+  API.get(
+    `/category/search?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}`
+  );
+
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);

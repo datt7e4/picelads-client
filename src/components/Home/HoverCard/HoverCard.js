@@ -1,5 +1,5 @@
 import React from "react";
-import { boxStyle, boxStyleFixed } from "../../sharedStyles/sharedStyle";
+import { boxStyle, boxStyleFixed } from "./sharedStyle";
 import { useSelector } from "react-redux";
 import ContentView from "./AvailableSlot";
 import AvailableSlot from "./ContentView";

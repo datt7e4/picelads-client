@@ -12,7 +12,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signin } from "../../actions/auth";
+import { signin } from "../../state/actions/auth";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GoogleSignIn from "./GoogleSignIn";
 

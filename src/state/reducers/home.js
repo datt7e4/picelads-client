@@ -1,4 +1,4 @@
-import { START_LOADING, END_LOADING, SCROLL } from "../constants/actionTypes";
+import { START_LOADING, END_LOADING, SCROLL } from "../../constants/actionTypes";
 
 export const isLoading = (state = true, action) => {
   switch (action.type) {

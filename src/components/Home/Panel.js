@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Paper,
   Modal,
@@ -6,7 +6,6 @@ import {
   Typography,
   Container,
   IconButton,
-  Stack,
 } from "@mui/material";
 import { CLEAR_ERROR, CLOSE_MODAL } from "../../constants/errorTypes";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +19,7 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 
 import ModalView from "./ModalView";
 import "./Panel.css";
+import { getPostsByPanel } from "../../state/actions/posts";
 
 // const formStyle = {
 //   position: "absolute",
@@ -69,7 +69,7 @@ const scroll = {
 const user = JSON.parse(localStorage.getItem("profile"));
 const clearData = { posX: "", posY: "", pixelIndex: "" };
 
-function Panel() {
+function Panel({ id }) {
   const panelWidth = 100;
   const panelHeight = 100;
   const selectedColor = "black";
@@ -81,6 +81,12 @@ function Panel() {
   const { openModal } = useSelector((state) => state.errors);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // console.log("effect call");
+    dispatch(getPostsByPanel(id));
+  }, [dispatch, id]);
+
   const handleClose = () => {
     setCurrentId(0);
     setPost(null);
@@ -132,6 +138,7 @@ function Panel() {
                     currentId={currentId}
                     setCurrentId={setCurrentId}
                     pixelIndex={data.pixelIndex}
+                    panelId={id}
                   />
                 </Typography>
               </Box>

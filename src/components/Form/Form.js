@@ -3,14 +3,12 @@ import { Typography, Input, TextField, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { useDispatch, useSelector } from "react-redux";
+import { createPost, updatePost, deletePost } from "../../state/actions/posts";
 
-import { createPost, updatePost, deletePost } from "../../actions/posts";
 import { CLEAR_ERROR, ERROR } from "../../constants/errorTypes";
 import Error from "./Error";
 
-const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex }) => {
-  //const panelId = useSelector((state) => state.panel);
-
+const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex, panelId }) => {
   const [postData, setPostData] = useState({
     companyName: "",
     companyLink: "",
@@ -20,7 +18,7 @@ const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex }) => {
     desc: "",
     postHeight: "",
     postWidth: "",
-    category: process.env.REACT_APP_ORIGINAL_ID,
+    category: panelId,
     //category: panelId,
     selectedFile: "",
   });

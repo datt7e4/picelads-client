@@ -14,7 +14,7 @@ import {
   Avatar,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { signout } from "../../actions/auth";
+import { signout } from "../../state/actions/auth";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SignInButton from "./SignInButton";

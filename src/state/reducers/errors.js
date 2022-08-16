@@ -3,7 +3,7 @@ import {
   CLEAR_ERROR,
   CLOSE_MODAL,
   OPEN_MODAL,
-} from "../constants/errorTypes";
+} from "../../constants/errorTypes";
 const errors = (state = { openModal: false, error: "" }, action) => {
   switch (action.type) {
     case ERROR:

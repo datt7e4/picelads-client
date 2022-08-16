@@ -2,9 +2,10 @@ import React from "react";
 // import Panel from "./Panel/Panel";
 import Hero from "../components/Home/Hero/Hero";
 import { useDispatch } from "react-redux";
-import { updateScrollPostion } from "../actions/home";
+import { updateScrollPostion } from "../state/actions/home";
 import Panel from "../components/Home/Panel";
 import { useEffect } from "react";
+const ORIGINAL = process.env.REACT_APP_ORIGINAL_ID;
 
 function Home() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <Panel />
+      <Panel id={ORIGINAL} />
     </>
   );
 }

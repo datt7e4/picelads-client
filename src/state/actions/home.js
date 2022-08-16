@@ -1,4 +1,4 @@
-import { SCROLL } from "../constants/actionTypes";
+import { SCROLL } from "../../constants/actionTypes";
 
 export const updateScrollPostion = (position) => (dispatch) => {
   try {

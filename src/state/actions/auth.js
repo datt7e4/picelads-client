@@ -1,5 +1,5 @@
-import { AUTH, LOGOUT } from "../constants/actionTypes";
-import * as api from "../api/index.js";
+import { AUTH, LOGOUT } from "../../constants/actionTypes";
+import * as api from "../../api/index.js";
 
 export const signin = (formData, router) => async (dispatch) => {
   try {

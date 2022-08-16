@@ -6,8 +6,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getPosts } from "./actions/posts";
 
 import "./App.css";
 
@@ -17,26 +15,20 @@ import Home from "./pages/Home";
 import Contact from "./components/Contact/Contact";
 import { BACKGROUND_COLOR } from "./constants/data";
 import { IconButton, Typography, Link } from "@mui/material";
-import {
-  FACEBOOK_LINK,
-  ZALO_LINK,
-  PHONE_LINK,
-  PHONE_NUMBER,
-} from "./constants/data";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+// import {
+//   FACEBOOK_LINK,
+//   ZALO_LINK,
+//   PHONE_LINK,
+//   PHONE_NUMBER,
+// } from "./constants/data";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
-import Auth from "./components/Auth/Auth";
+// import Auth from "./components/Auth/Auth";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    // console.log("effect call");
-    dispatch(getPosts());
-  }, [dispatch]);
-
   return (
     <>
       <Router>
@@ -57,10 +49,17 @@ function App() {
 export default App;
 function Footer() {
   return (
-    <div className="footer" style={{ backgroundColor: BACKGROUND_COLOR }}>
+    <div
+      className="footer"
+      style={{ backgroundColor: BACKGROUND_COLOR, marginTop: "20px" }}
+    >
       <Typography fontSize={18}>
         {"Inspired by "}
-        <Link color="inherit" href={`http://www.milliondollarhomepage.com/`}>
+        <Link
+          color="inherit"
+          target="_blank"
+          href={`http://www.milliondollarhomepage.com/`}
+        >
           milliondollarhomepage
         </Link>
         {"."}

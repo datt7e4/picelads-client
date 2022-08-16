@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 function Posts({ personalSelected, setCurrentId, setPost }) {
   const isLoading = useSelector((state) => state.isLoading);
   const posts = useSelector((state) => state.posts);
+
   return (
     <>
       {isLoading ? (
