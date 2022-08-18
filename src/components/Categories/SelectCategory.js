@@ -1,32 +1,42 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
 import {
   Paper,
   FormControl,
   Select,
   InputLabel,
   MenuItem,
-  Button,
 } from "@mui/material";
-import { getPanelId, clearPanelId } from "../../state/actions/panel";
-import { categories, subCategories } from "../../constants/categories";
+import { getPanels } from "../../state/actions/panel";
+import { categories } from "../../constants/categories";
 import { countries } from "../../constants/countries";
-function SelectCategory() {
+function SelectCategory({ setPanels }) {
   const [category, setCategory] = useState({
-    country: "",
+    country: "United States",
     state: "",
     city: "",
     category: "",
     subCategory: "",
   });
 
-  const dispatch = useDispatch();
+  //call this function everytime the category changes
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getPanels(category);
+      // console.log(category);
+      setPanels(data);
+    };
+    fetchData();
+  }, [category]);
 
-  const handleSubmit = () => {
-    dispatch(getPanelId(category));
-    // dispatch({ type: CLEAR_ERROR });
-  };
-  const handleChange = (event) => {
+  // const handleSubmit = async () => {
+  //   console.log(category);
+  //   dispatch(getPanelId(category));
+  //   const data = await getPanels(category);
+  //   console.log(data);
+  //   setPanels(data);
+  //   dispatch({ type: CLEAR_ERROR });
+  // };
+  const handleChange = async (event) => {
     //reset state if user reselect something
     if (event.target.name === "country")
       setCategory({
@@ -41,7 +51,14 @@ function SelectCategory() {
         city: "",
         state: event.target.value,
       });
-    else setCategory({ ...category, [event.target.name]: event.target.value });
+    else if (event.target.name === "category") {
+      setCategory({
+        ...category,
+        subCategory: "",
+        category: event.target.value,
+      });
+    } else
+      setCategory({ ...category, [event.target.name]: event.target.value });
   };
 
   return (
@@ -149,21 +166,16 @@ function SelectCategory() {
           onChange={handleChange}
           autoWidth
         >
-          {subCategories.map(({ code, name }) => (
-            <MenuItem key={name} value={name}>
-              {name}
-            </MenuItem>
-          ))}
+          {category.category &&
+            categories
+              .find((e) => e.name === category.category)
+              .sub.map(({ code, name }) => (
+                <MenuItem key={name} value={name}>
+                  {name}
+                </MenuItem>
+              ))}
         </Select>
       </FormControl>
-      <Button
-        variant="contained"
-        color="primary"
-        style={{ margin: 5 }}
-        onClick={handleSubmit}
-      >
-        Find
-      </Button>
     </Paper>
   );
 }

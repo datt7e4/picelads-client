@@ -90,8 +90,8 @@ export const cities = [
 
 export const states = [
   {
-    name: "Original2",
-    cities: [{ name: "Original3" }],
+    name: "Washington",
+    cities: [{ name: "Seattle Area" }],
   },
 ];
 
@@ -101,15 +101,16 @@ export const UnitedState = {
   states: states,
 };
 
-export const Original = {
-  code: "Original",
-  name: "Original",
+export const Global = {
+  code: "glo",
+  name: "Global",
   states: [
     {
-      name: "Original",
-      cities: [{ name: "Original" }],
+      name: "Global",
+      cities: [{ name: "Global" }],
     },
   ],
 };
 
-export const countries = [Original, UnitedState, VietNam];
+// export const countries = [Original, UnitedState, VietNam];
+export const countries = [Global, UnitedState];

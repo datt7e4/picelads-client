@@ -29,5 +29,10 @@ export const fetchPanelByCategory = (searchQuery) =>
     `/category/search?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}`
   );
 
+export const fetchPanels = (searchQuery) =>
+  API.get(
+    `/category/searches?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}`
+  );
+
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);

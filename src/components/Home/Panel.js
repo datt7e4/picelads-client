@@ -20,6 +20,7 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import ModalView from "./ModalView";
 import "./Panel.css";
 import { getPostsByPanel } from "../../state/actions/posts";
+import Hero from "./Hero/Hero";
 
 // const formStyle = {
 //   position: "absolute",
@@ -95,79 +96,82 @@ function Panel({ id }) {
   };
 
   return (
-    <Container maxWidth="xl">
-      <RadioButtonsGroup setPerSelected={setPerSelected} />
-      <div className="panel-container">
-        <Paper elevation={4} className="panel">
-          {/* <TransformWrapper>
-            <TransformComponent> */}
-          <Posts
-            setCurrentId={setCurrentId}
-            personalSelected={personalSelected}
-            setPost={setPost}
-          />
-          <PixelsPanel
-            width={panelWidth}
-            height={panelHeight}
-            selectedColor={selectedColor}
-            setData={setData}
-          />
-          {/* </TransformComponent>
-          </TransformWrapper> */}
-        </Paper>
-      </div>
+    <>
+      <Hero title={"Starter Panel"} subTitle={"Let people know about you"} />
+      <Container maxWidth="xl">
+        <RadioButtonsGroup setPerSelected={setPerSelected} />
+        <div className="panel-container">
+          <Paper elevation={4} className="panel">
+            {/* <TransformWrapper>
+          <TransformComponent> */}
+            <Posts
+              setCurrentId={setCurrentId}
+              personalSelected={personalSelected}
+              setPost={setPost}
+            />
+            <PixelsPanel
+              width={panelWidth}
+              height={panelHeight}
+              selectedColor={selectedColor}
+              setData={setData}
+            />
+            {/* </TransformComponent>
+        </TransformWrapper> */}
+          </Paper>
+        </div>
 
-      <Modal
-        open={openModal}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        {user || post ? (
-          personalSelected === "personal" || !post ? (
+        <Modal
+          open={openModal}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          {user || post ? (
+            personalSelected === "personal" || !post ? (
+              <Box sx={box}>
+                <IconButton aria-label="close" onClick={handleClose}>
+                  <CloseIcon fontSize="large" />
+                </IconButton>
+                <Box sx={scroll}>
+                  <Typography textAlign="center" variant="h6" component="h2">
+                    Hello {user.result.name}
+                    <Form
+                      posX={data.posX}
+                      posY={data.posY}
+                      currentId={currentId}
+                      setCurrentId={setCurrentId}
+                      pixelIndex={data.pixelIndex}
+                      panelId={id}
+                    />
+                  </Typography>
+                </Box>
+              </Box>
+            ) : (
+              <ModalView post={post} handleClose={handleClose} />
+            )
+          ) : (
             <Box sx={box}>
               <IconButton aria-label="close" onClick={handleClose}>
                 <CloseIcon fontSize="large" />
               </IconButton>
               <Box sx={scroll}>
-                <Typography textAlign="center" variant="h6" component="h2">
-                  Hello {user.result.name}
-                  <Form
-                    posX={data.posX}
-                    posY={data.posY}
-                    currentId={currentId}
-                    setCurrentId={setCurrentId}
-                    pixelIndex={data.pixelIndex}
-                    panelId={id}
-                  />
+                <Typography
+                  textAlign="center"
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  fontWeight="bold"
+                >
+                  Slot {data.pixelIndex} is available. <br />
+                  Please sign in or sign up to post.
                 </Typography>
+                <Auth />
               </Box>
             </Box>
-          ) : (
-            <ModalView post={post} handleClose={handleClose} />
-          )
-        ) : (
-          <Box sx={box}>
-            <IconButton aria-label="close" onClick={handleClose}>
-              <CloseIcon fontSize="large" />
-            </IconButton>
-            <Box sx={scroll}>
-              <Typography
-                textAlign="center"
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                fontWeight="bold"
-              >
-                Slot {data.pixelIndex} is available. <br />
-                Please sign in or sign up to post.
-              </Typography>
-              <Auth />
-            </Box>
-          </Box>
-        )}
-      </Modal>
-    </Container>
+          )}
+        </Modal>
+      </Container>
+    </>
   );
 }
 

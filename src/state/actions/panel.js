@@ -17,6 +17,18 @@ export const getPanelId = (searchQuery) => async (dispatch) => {
   }
 };
 
+export const getPanels = async (searchQuery) => {
+  try {
+    const { data } = await api.fetchPanels(searchQuery);
+    // console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    console.log("Error in actions/panels.js");
+    // dispatch({ type: ERROR, error: "Something wrong in getPanels" });
+  }
+};
+
 export const clearPanelId = () => (dispatch) => {
   try {
     dispatch({ type: CLEAR_ID });

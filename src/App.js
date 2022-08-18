@@ -15,6 +15,8 @@ import Home from "./pages/Home";
 import Contact from "./components/Contact/Contact";
 import { BACKGROUND_COLOR } from "./constants/data";
 import { IconButton, Typography, Link } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { updateScrollPostion } from "./state/actions/home";
 // import {
 //   FACEBOOK_LINK,
 //   ZALO_LINK,
@@ -29,6 +31,20 @@ import { IconButton, Typography, Link } from "@mui/material";
 const user = JSON.parse(localStorage.getItem("profile"));
 
 function App() {
+  const dispatch = useDispatch();
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    // console.log(position);
+    dispatch(updateScrollPostion(position));
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
   return (
     <>
       <Router>

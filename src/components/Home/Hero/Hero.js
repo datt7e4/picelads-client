@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Stack, Typography } from "@mui/material";
 import "./Hero.css";
 
-function Hero() {
+function Hero({ title, subTitle }) {
   return (
     <div className="hero-image">
       <Container maxWidth="xl">
@@ -14,10 +14,10 @@ function Hero() {
               fontFamily="inherit"
               fontWeight="bold"
             >
-              Starter Panel
+              {title}
             </Typography>
             <Typography variant="subtitle2" fontFamily="inherit" fontSize={20}>
-              Let people know about you
+              {subTitle}
             </Typography>
             {/* <Typography
               variant="subtitle1"

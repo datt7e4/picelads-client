@@ -1,8 +1,10 @@
+const tourism_sub = [{ code: "fandb", name: "Food and Beverage" }];
+const community_sub = [{ code: "vnsea", name: "Vietnamese In Seattle" }];
+const for_sell_sub = [{ code: "gen", name: "General" }];
 export const categories = [
-  { code: "OG", name: "Original" },
-  { code: "Tour", name: "Tourism" },
-];
-export const subCategories = [
-  { code: "OG", name: "Original" },
-  { code: "F&B", name: "Food and Beverage" },
+  // { code: "OG", name: "Original" },
+  { code: "tour", name: "Tourism", sub: tourism_sub },
+  { code: "comm", name: "Community", sub: community_sub },
+  { code: "4sell", name: "For Sell", sub: for_sell_sub },
+  // { code: "crypto", name: "Cryptocurrencies" },
 ];
