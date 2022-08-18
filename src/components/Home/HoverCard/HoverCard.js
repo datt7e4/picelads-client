@@ -3,12 +3,13 @@ import { boxStyle, boxStyleFixed } from "../../sharedStyles/sharedStyle";
 import { useSelector } from "react-redux";
 import ContentView from "./AvailableSlot";
 import AvailableSlot from "./ContentView";
+import { BACKGROUND_COLOR } from "../../../constants/data";
 
 function BoxHover({ pixelIndex, post }) {
   const imageStyle = {
-    borderRadius: 5,
-    backgroundColor: "#001529",
-    // backgroundColor: "gray",
+    borderRadius: "10px",
+    // backgroundColor: "#001529",
+    backgroundColor: BACKGROUND_COLOR,
     height: 130,
     width: 130,
     objectFit: "contain",

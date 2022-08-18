@@ -7,11 +7,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { getPosts } from "./actions/posts";
 
+import "./App.css";
+
+import Categories from "./components/Categories/Categories";
 import Error from "./components/NavBar/Error/Error";
 import Home from "./pages/Home";
 import Contact from "./components/Contact/Contact";
-
+import { BACKGROUND_COLOR } from "./constants/data";
 import { IconButton, Typography, Link } from "@mui/material";
 import {
   FACEBOOK_LINK,
@@ -22,11 +26,6 @@ import {
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
-import { getPosts } from "./actions/posts";
-
-import "./App.css";
-
-import Categories from "./components/Categories/Categories";
 import Auth from "./components/Auth/Auth";
 
 const user = JSON.parse(localStorage.getItem("profile"));
@@ -58,7 +57,7 @@ function App() {
 export default App;
 function Footer() {
   return (
-    <div className="footer">
+    <div className="footer" style={{ backgroundColor: BACKGROUND_COLOR }}>
       <Typography fontSize={18}>
         {"Inspired by "}
         <Link color="inherit" href={`http://www.milliondollarhomepage.com/`}>

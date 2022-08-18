@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Button, Modal, Box } from "@mui/material";
+import { Button, Modal, Box, IconButton } from "@mui/material";
 import Auth from "../Auth/Auth";
+import CloseIcon from "@mui/icons-material/Close";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -13,6 +15,7 @@ const style = {
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
+  borderRadius: "10px",
 };
 function SignInButton() {
   const [open, setOpen] = useState(false);
@@ -47,7 +50,16 @@ function SignInButton() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <IconButton
+            aria-label="close"
+            // style={{ float: "right" }}
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="large" />
+          </IconButton>
+
           <Auth />
+
           {/* <ChildModal /> */}
         </Box>
       </Modal>
