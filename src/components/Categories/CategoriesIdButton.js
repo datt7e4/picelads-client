@@ -4,9 +4,10 @@ import { useDispatch } from "react-redux";
 import { BACKGROUND_COLOR } from "../../constants/data";
 import { getPanelId } from "../../state/actions/panel";
 
-function CategoriesIdButton({ panels }) {
+function CategoriesIdButton({ panels, setSelectedPanel }) {
   const dispatch = useDispatch();
   const handleClick = ({ country, state, city, category, subCategory }) => {
+    setSelectedPanel(subCategory);
     dispatch(getPanelId({ country, state, city, category, subCategory }));
   };
   return (

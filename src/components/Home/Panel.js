@@ -97,7 +97,6 @@ function Panel({ id }) {
 
   return (
     <>
-      <Hero title={"Starter Panel"} subTitle={"Let people know about you"} />
       <Container maxWidth="xl">
         <RadioButtonsGroup setPerSelected={setPerSelected} />
         <div className="panel-container">

@@ -5,6 +5,6 @@ export const categories = [
   // { code: "OG", name: "Original" },
   { code: "tour", name: "Tourism", sub: tourism_sub },
   { code: "comm", name: "Community", sub: community_sub },
-  { code: "4sell", name: "For Sell", sub: for_sell_sub },
+  { code: "4sale", name: "For Sale", sub: for_sell_sub },
   // { code: "crypto", name: "Cryptocurrencies" },
 ];

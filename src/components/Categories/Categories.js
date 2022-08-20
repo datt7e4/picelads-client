@@ -9,13 +9,23 @@ import CategoriesIdButton from "./CategoriesIdButton";
 function Categories() {
   const panelId = useSelector((state) => state.panel);
   const [panels, setPanels] = useState({});
+  const [selectedPanel, setSelectedPanel] = useState("");
   // return <ComingSoon page={"Categories"} />;
 
   return (
     <Container maxWidth="xl">
       <SelectCategory setPanels={setPanels} />
-      <CategoriesIdButton panels={panels} />
-      {panelId && <Panel id={panelId} />}
+      <CategoriesIdButton panels={panels} setSelectedPanel={setSelectedPanel} />
+      {console.log(selectedPanel)}
+      {panelId && (
+        <>
+          <Hero
+            title={selectedPanel}
+            // subTitle={"Let people know about you"}
+          />
+          <Panel id={panelId} title={selectedPanel} />
+        </>
+      )}
     </Container>
   );
 }
