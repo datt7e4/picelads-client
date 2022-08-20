@@ -113,4 +113,4 @@ export const Global = {
 };
 
 // export const countries = [Original, UnitedState, VietNam];
-export const countries = [Global, UnitedState];
+export const countries = [Global, UnitedState, VietNam];
