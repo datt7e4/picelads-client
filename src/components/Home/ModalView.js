@@ -125,7 +125,13 @@ function ModalView({ post, handleClose }) {
                 <Typography fontSize={14}>{post.companyPhone}</Typography>
               </div>
             )}
-            <Typography marginTop={2} variant="body1" component="h2">
+            <Typography
+              // line break for description view
+              sx={{ whiteSpace: "pre-line" }}
+              marginTop={2}
+              variant="body1"
+              component="h2"
+            >
               {post.desc}
             </Typography>
           </Grid>
