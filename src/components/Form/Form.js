@@ -120,7 +120,7 @@ const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex, panelId }) => {
       <TextField
         name="compName"
         variant="outlined"
-        label="Company Name"
+        label="Title"
         margin="normal"
         fullWidth
         value={postData.companyName}
@@ -133,7 +133,7 @@ const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex, panelId }) => {
       <TextField
         name="compLink"
         variant="outlined"
-        label="Company Link"
+        label="Link"
         margin="normal"
         fullWidth
         value={postData.companyLink}
