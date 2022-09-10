@@ -141,6 +141,7 @@ function Panel({ id }) {
                       setCurrentId={setCurrentId}
                       pixelIndex={data.pixelIndex}
                       panelId={id}
+                      setPost={setPost}
                     />
                   </Typography>
                 </Box>

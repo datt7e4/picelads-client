@@ -8,7 +8,15 @@ import { createPost, updatePost, deletePost } from "../../state/actions/posts";
 import { CLEAR_ERROR, ERROR } from "../../constants/errorTypes";
 import Error from "./Error";
 
-const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex, panelId }) => {
+const Form = ({
+  currentId,
+  setCurrentId,
+  posX,
+  posY,
+  pixelIndex,
+  panelId,
+  setPost,
+}) => {
   const [postData, setPostData] = useState({
     companyName: "",
     companyLink: "",
@@ -19,19 +27,19 @@ const Form = ({ currentId, setCurrentId, posX, posY, pixelIndex, panelId }) => {
     postHeight: "",
     postWidth: "",
     category: panelId,
-    //category: panelId,
     selectedFile: "",
   });
 
   var form_data = new FormData();
 
   const post = useSelector((state) =>
-    currentId ? state.posts.find((message) => message._id === currentId) : null
+    currentId ? state.posts.find((post) => post._id === currentId) : null
   );
   const { error } = useSelector((state) => state.errors);
   const [dis, setDis] = useState(false);
   const handleDeleteButton = () => {
     dispatch(deletePost(currentId));
+    setPost(null);
     setCurrentId(0);
   };
 
