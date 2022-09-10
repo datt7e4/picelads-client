@@ -8,29 +8,29 @@ import CategoryList from "./CategoryList";
 import SearchBar from "./SearchBar";
 import { getPanels } from "../../state/actions/panel";
 
-function Categories() {
+function Categories({ selectedPanel, setSelectedPanel }) {
   const panelId = useSelector((state) => state.panel);
   const [panels, setPanels] = useState({});
-  const [selectedPanel, setSelectedPanel] = useState("");
-  const [category, setCategory] = useState({
+  const emptyCategory = {
     country: "",
     state: "",
     city: "",
     category: "",
     subCategory: "",
-  });
+  };
 
   const keys = ["category", "subCategory"];
 
   const [search, setSearch] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPanels(category);
+      const data = await getPanels(emptyCategory);
+      //console.log(data);
       console.log("effect called");
       setPanels(data);
     };
     fetchData();
-  }, [category]);
+  }, []);
   return (
     <Container maxWidth="xl">
       <Paper sx={{ mt: 5, mb: 5 }}>
@@ -49,7 +49,7 @@ function Categories() {
             title={selectedPanel}
             // subTitle={"Let people know about you"}
           />
-          <Panel id={panelId} title={selectedPanel} />
+          <Panel id={panelId} />
         </>
       )}
     </Container>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import {
   BrowserRouter as Router,
@@ -32,6 +32,7 @@ const user = JSON.parse(localStorage.getItem("profile"));
 
 function App() {
   const dispatch = useDispatch();
+  const [selectedPanel, setSelectedPanel] = useState("");
   const handleScroll = () => {
     const position = window.pageYOffset;
     // console.log(position);
@@ -54,7 +55,16 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/home" exact element={<Home />} />
           <Route path="/contact" exact element={<Contact />} />
-          <Route path="/categories" exact element={<Categories />} />
+          <Route
+            path="/categories"
+            exact
+            element={
+              <Categories
+                setSelectedPanel={setSelectedPanel}
+                selectedPanel={selectedPanel}
+              />
+            }
+          />
         </Routes>
       </Router>
       <Footer />
