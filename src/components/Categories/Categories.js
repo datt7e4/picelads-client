@@ -17,6 +17,7 @@ function Categories({ selectedPanel, setSelectedPanel }) {
     city: "",
     category: "",
     subCategory: "",
+    categoryName: "",
   };
 
   const keys = ["category", "subCategory"];
@@ -25,7 +26,7 @@ function Categories({ selectedPanel, setSelectedPanel }) {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getPanels(emptyCategory);
-      //console.log(data);
+      console.log(data);
       console.log("effect called");
       setPanels(data);
     };
