@@ -26,14 +26,15 @@ function Categories({ selectedPanel, setSelectedPanel }) {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getPanels(emptyCategory);
-      console.log(data);
-      console.log("effect called");
+      // console.log(data);
+      // console.log("effect called");
       setPanels(data);
     };
     fetchData();
   }, []);
   return (
     <Container maxWidth="xl">
+      {/* {console.log(selectedPanel)} */}
       <Paper sx={{ mt: 5, mb: 5 }}>
         <SearchBar setSearch={setSearch} />
         <CategoryList
@@ -47,8 +48,8 @@ function Categories({ selectedPanel, setSelectedPanel }) {
       {panelId && (
         <>
           <Hero
-            title={selectedPanel}
-            // subTitle={"Let people know about you"}
+            title={selectedPanel.categoryName}
+            subTitle={`${selectedPanel.city} -> ${selectedPanel.category} -> ${selectedPanel.subCategory}`}
           />
           <Panel id={panelId} />
         </>

@@ -26,12 +26,12 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const fetchPanelByCategory = (searchQuery) =>
   API.get(
-    `/category/search?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}`
+    `/category/search?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}&categoryName=${searchQuery.categoryName}`
   );
 
 export const fetchPanels = (searchQuery) =>
   API.get(
-    `/category/searches?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}`
+    `/category/searches?country=${searchQuery.country}&state=${searchQuery.state}&city=${searchQuery.city}&category=${searchQuery.category}&subCategory=${searchQuery.subCategory}&categoryName=${searchQuery.categoryName}`
   );
 
 export const signIn = (formData) => API.post("/user/signin", formData);

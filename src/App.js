@@ -30,9 +30,17 @@ import { updateScrollPostion } from "./state/actions/home";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 
+const emptyPanelAttribute = {
+  country: "",
+  state: "",
+  city: "",
+  category: "",
+  subCategory: "",
+  categoryName: "",
+};
 function App() {
   const dispatch = useDispatch();
-  const [selectedPanel, setSelectedPanel] = useState("");
+  const [selectedPanel, setSelectedPanel] = useState(emptyPanelAttribute);
   const handleScroll = () => {
     const position = window.pageYOffset;
     // console.log(position);

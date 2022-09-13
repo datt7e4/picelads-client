@@ -14,7 +14,15 @@ function CategoryList({ panels, setSelectedPanel, search }) {
     subCategory,
     categoryName,
   }) => {
-    setSelectedPanel(categoryName);
+    // console.log(categoryName);
+    setSelectedPanel({
+      country,
+      state,
+      city,
+      category,
+      subCategory,
+      categoryName,
+    });
     dispatch(
       getPanelId({ country, state, city, category, subCategory, categoryName })
     );

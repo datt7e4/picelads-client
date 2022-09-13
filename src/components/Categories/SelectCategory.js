@@ -22,7 +22,7 @@ function SelectCategory({ setPanels }) {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getPanels(category);
-      // console.log(category);
+      console.log(category);
       setPanels(data);
     };
     fetchData();

@@ -20,7 +20,6 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import ModalView from "./ModalView";
 import "./Panel.css";
 import { getPostsByPanel } from "../../state/actions/posts";
-import Hero from "./Hero/Hero";
 
 // const formStyle = {
 //   position: "absolute",
