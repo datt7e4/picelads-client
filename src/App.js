@@ -30,17 +30,8 @@ import { updateScrollPostion } from "./state/actions/home";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 
-const emptyPanelAttribute = {
-  country: "",
-  state: "",
-  city: "",
-  category: "",
-  subCategory: "",
-  categoryName: "",
-};
 function App() {
   const dispatch = useDispatch();
-  const [selectedPanel, setSelectedPanel] = useState(emptyPanelAttribute);
   const handleScroll = () => {
     const position = window.pageYOffset;
     // console.log(position);
@@ -63,16 +54,8 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/home" exact element={<Home />} />
           <Route path="/contact" exact element={<Contact />} />
-          <Route
-            path="/categories"
-            exact
-            element={
-              <Categories
-                setSelectedPanel={setSelectedPanel}
-                selectedPanel={selectedPanel}
-              />
-            }
-          />
+          <Route path="/categories" exact element={<Categories />} />
+          <Route path="/categories/:id" exact element={<Categories />} />
         </Routes>
       </Router>
       <Footer />

@@ -1,19 +1,17 @@
-import { Button } from "@mui/material";
 import React from "react";
+import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { BACKGROUND_COLOR } from "../../constants/data";
 import { getPanelId } from "../../state/actions/panel";
 
 function CategoryList({ panels, setSelectedPanel, search }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleClick = ({
-    country,
-    state,
-    city,
-    category,
-    subCategory,
-    categoryName,
-  }) => {
+  const handleClick = (
+    { country, state, city, category, subCategory, categoryName },
+    panelId
+  ) => {
     // console.log(categoryName);
     setSelectedPanel({
       country,
@@ -23,6 +21,8 @@ function CategoryList({ panels, setSelectedPanel, search }) {
       subCategory,
       categoryName,
     });
+
+    navigate(`/categories/${panelId}`);
     dispatch(
       getPanelId({ country, state, city, category, subCategory, categoryName })
     );
@@ -45,7 +45,7 @@ function CategoryList({ panels, setSelectedPanel, search }) {
                   key={panel._id}
                   variant="contained"
                   //very important to use () =>
-                  onClick={() => handleClick(panel)}
+                  onClick={() => handleClick(panel, panel._id)}
                   sx={{
                     background: BACKGROUND_COLOR,
                     margin: "10px",

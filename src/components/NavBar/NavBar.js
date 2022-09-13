@@ -21,7 +21,8 @@ import SignInButton from "./SignInButton";
 import { BACKGROUND_COLOR } from "../../constants/data";
 
 const user = JSON.parse(localStorage.getItem("profile"));
-
+const logo = "One-Garlic-logos_white.png";
+// const logo = "High-Resolution-Logo-Transparent-Background.jpg";
 const pages = ["Home", "Categories"];
 const pagesRoute = ["home", "categories", "contact"];
 
@@ -170,7 +171,7 @@ const MobileNavBar = () => {
         </Menu>
       </Box>
       <Link href="/" sx={{ display: { xs: "flex", md: "none" } }}>
-        <img src="One-Garlic-logos_white.png" alt="logo" width="100" />
+        <img src={logo} alt="logo" width="100" />
       </Link>
       <Typography
         variant="h6"
@@ -205,7 +206,7 @@ const DesktopNavBar = () => {
   return (
     <>
       <Link href="/" sx={{ display: { xs: "none", md: "flex" } }}>
-        <img src="One-Garlic-logos_white.png" alt="logo" width="100" />
+        <img src={logo} alt="logo" width="100" />
       </Link>
       <Typography
         variant="h6"
