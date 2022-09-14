@@ -30,6 +30,12 @@ const Form = ({
     selectedFile: "",
   });
 
+  const getArea = ({ width, height }) => {
+    if (!width || !height) return 0;
+    return width * height * 100;
+  };
+
+  const [size, setSize] = useState({ width: 0, height: 0 });
   var form_data = new FormData();
 
   const post = useSelector((state) =>
@@ -60,7 +66,12 @@ const Form = ({
 
     const height = parseInt(postData.postHeight);
     const width = parseInt(postData.postWidth);
-    if (!height || !width) {
+    if (getArea(size) > 2500) {
+      dispatch({
+        type: ERROR,
+        error: "Oversize, contact us for more infomation.",
+      });
+    } else if (!height || !width) {
       dispatch({ type: ERROR, error: "Width and height are required." });
     } else if (height < 1 || width < 1) {
       dispatch({
@@ -89,7 +100,6 @@ const Form = ({
 
   return (
     <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-      {error && <Error error={error} setDis={setDis} />}
       {currentId ? (
         <Typography variant="h6">
           {`Editing "${postData.companyName}"`}
@@ -109,6 +119,7 @@ const Form = ({
             fullWidth
             error={postData.postWidth === ""}
             onChange={(e) => {
+              setSize({ ...size, width: parseInt(e.target.value) });
               setPostData({ ...postData, postWidth: `${e.target.value}0px` });
             }}
           />
@@ -118,10 +129,17 @@ const Form = ({
             fullWidth
             error={postData.postHeight === ""}
             onChange={(e) => {
+              setSize({ ...size, height: parseInt(e.target.value) });
               setPostData({ ...postData, postHeight: `${e.target.value}0px` });
             }}
           />
           <span>Height (Per 10 pixels)</span>
+          <Typography>{`Area: ${getArea(
+            size
+          )} pixels (Max 2500 pixels)`}</Typography>
+          {getArea(size) > 2500 && (
+            <Typography color={"error"}>Warning, oversize!</Typography>
+          )}
         </>
       )}
 
@@ -185,11 +203,13 @@ const Form = ({
           error={postData.selectedFile === ""}
         />
       </div>
+      {error && <Error error={error} setDis={setDis} />}
       <Button
         variant="contained"
         color="primary"
         size="large"
         type="submit"
+        margin="10px"
         disabled={dis}
         fullWidth
       >
