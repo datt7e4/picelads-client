@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SignInButton from "./SignInButton";
 import { BACKGROUND_COLOR } from "../../constants/data";
-import logo from "./logo.png";
+import logo from "./logo.jpg";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 // const logo = "High-Resolution-Logo-Transparent-Background.jpg";
@@ -171,7 +171,7 @@ const MobileNavBar = () => {
         </Menu>
       </Box>
       <Link href="/" sx={{ display: { xs: "flex", md: "none" } }}>
-        <img src={logo} alt="logo" width="100" />
+        <img src={logo} alt="logo" width="40" />
       </Link>
       <Typography
         variant="h6"
@@ -206,7 +206,7 @@ const DesktopNavBar = () => {
   return (
     <>
       <Link href="/" sx={{ display: { xs: "none", md: "flex" } }}>
-        <img src={logo} alt="logo" width="100" />
+        <img src={logo} alt="logo" width="40" />
       </Link>
       <Typography
         variant="h6"

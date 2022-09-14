@@ -6,7 +6,7 @@ function SearchBar({ setSearch }) {
   return (
     <Box>
       <TextField
-        sx={{ m: 1, minWidth: 400 }}
+        sx={{ m: 1, minWidth: 350 }}
         name="search"
         variant="outlined"
         label="Search"
