@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 
@@ -47,17 +42,17 @@ function App() {
   }, [handleScroll]);
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <NavBar />
         <Routes>
           <Route path="/*" element={<Error />} />
           <Route path="/" exact element={<Home />} />
           <Route path="/home" exact element={<Home />} />
           <Route path="/contact" exact element={<Contact />} />
-          <Route path="/categories" exact element={<Categories />} />
-          <Route path="/categories/:id" exact element={<Categories />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/:id" element={<Categories />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
       <Footer />
     </>
   );

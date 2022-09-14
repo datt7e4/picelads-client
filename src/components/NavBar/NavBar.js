@@ -19,9 +19,9 @@ import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SignInButton from "./SignInButton";
 import { BACKGROUND_COLOR } from "../../constants/data";
+import logo from "./logo.png";
 
 const user = JSON.parse(localStorage.getItem("profile"));
-const logo = "One-Garlic-logos_white.png";
 // const logo = "High-Resolution-Logo-Transparent-Background.jpg";
 const pages = ["Home", "Categories"];
 const pagesRoute = ["home", "categories", "contact"];
