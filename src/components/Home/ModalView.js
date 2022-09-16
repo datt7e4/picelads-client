@@ -51,7 +51,7 @@ const scroll = {
     width: 350,
   },
   width: 800,
-  maxHeight: "80vh",
+  maxHeight: "70vh",
   bgcolor: "background.paper",
   overflow: "auto",
   padding: 1,

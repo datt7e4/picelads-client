@@ -24,8 +24,8 @@ const Form = ({
     posX: `${posX}px`,
     posY: `${posY}px`,
     desc: "",
-    postHeight: "",
-    postWidth: "",
+    postHeight: "10px",
+    postWidth: "10px",
     category: panelId,
     selectedFile: "",
   });
@@ -35,7 +35,7 @@ const Form = ({
     return width * height * 100;
   };
 
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [size, setSize] = useState({ width: 1, height: 1 });
   var form_data = new FormData();
 
   const post = useSelector((state) =>
@@ -116,8 +116,10 @@ const Form = ({
         <>
           <Input
             type="number"
+            defaultValue={size.width}
             fullWidth
             error={postData.postWidth === ""}
+            value={size.width}
             onChange={(e) => {
               setSize({ ...size, width: parseInt(e.target.value) });
               setPostData({ ...postData, postWidth: `${e.target.value}0px` });
@@ -127,6 +129,8 @@ const Form = ({
           <Input
             type="number"
             fullWidth
+            defaultValue={size.height}
+            value={size.height}
             error={postData.postHeight === ""}
             onChange={(e) => {
               setSize({ ...size, height: parseInt(e.target.value) });
