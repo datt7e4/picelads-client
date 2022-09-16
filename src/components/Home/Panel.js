@@ -49,7 +49,6 @@ const box = {
 };
 const scroll = {
   "@media(max-width: 1400px)": {
-    maxHeight: 600,
     width: 450,
   },
   "@media(max-width: 600px)": {
@@ -60,7 +59,7 @@ const scroll = {
   },
 
   width: 500,
-  maxHeight: 800,
+  maxHeight: "70vh",
   bgcolor: "background.paper",
   overflow: "auto",
   padding: 4,

@@ -41,7 +41,6 @@ const scroll = {
   // },
 
   "@media(max-width: 1400px)": {
-    maxHeight: 600,
     width: 700,
   },
 
@@ -52,7 +51,7 @@ const scroll = {
     width: 350,
   },
   width: 800,
-  maxHeight: 800,
+  maxHeight: "80vh",
   bgcolor: "background.paper",
   overflow: "auto",
   padding: 1,
