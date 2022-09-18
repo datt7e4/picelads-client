@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import BoxHover from "../HoverCard/HoverCard";
-import { OPEN_MODAL } from "../../../constants/errorTypes";
+
+import { OPEN_MODAL } from "../../constants/errorTypes";
 import "./styles/pixel.css";
 
 import { useDispatch } from "react-redux";

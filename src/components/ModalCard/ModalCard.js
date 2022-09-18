@@ -4,7 +4,7 @@ import "./ModalCard.css";
 
 import HoverCard from "../HoverCard/HoverCard";
 import { useDispatch } from "react-redux";
-import { OPEN_MODAL } from "../../../constants/errorTypes";
+import { OPEN_MODAL } from "../../constants/errorTypes";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 

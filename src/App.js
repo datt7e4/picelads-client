@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 
-import Categories from "./components/Categories/Categories";
+import Categories from "./components/PageCategories/Categories";
 import Error from "./components/NavBar/Error/Error";
-import Home from "./pages/Home";
+import Home from "./components/PageHome/Home";
 import Contact from "./components/Contact/Contact";
 import { BACKGROUND_COLOR } from "./constants/data";
 import { IconButton, Typography, Link } from "@mui/material";

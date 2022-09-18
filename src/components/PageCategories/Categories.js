@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Paper } from "@mui/material";
-import Panel from "../Home/Panel";
-import Hero from "../Home/Hero/Hero";
+import Panel from "../PageHome/Panel";
+import Hero from "../Hero/Hero";
 import CategoryList from "./CategoryList";
 import SearchBar from "./SearchBar";
 import { getPanels } from "../../state/actions/panel";
