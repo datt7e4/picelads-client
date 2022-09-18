@@ -1,8 +1,7 @@
 import React from "react";
-import ComingSoon from "../NavBar/Countdown/ComingSoon";
 
 function Contact() {
-  return <ComingSoon page={"Contact"} />;
+  return <>Contact</>;
 }
 
 export default Contact;

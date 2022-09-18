@@ -14,14 +14,15 @@ import {
   Avatar,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { signout } from "../../actions/auth";
+import { signout } from "../../state/actions/auth";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SignInButton from "./SignInButton";
 import { BACKGROUND_COLOR } from "../../constants/data";
+import logo from "./logo.jpg";
 
 const user = JSON.parse(localStorage.getItem("profile"));
-
+// const logo = "High-Resolution-Logo-Transparent-Background.jpg";
 const pages = ["Home", "Categories"];
 const pagesRoute = ["home", "categories", "contact"];
 
@@ -170,7 +171,7 @@ const MobileNavBar = () => {
         </Menu>
       </Box>
       <Link href="/" sx={{ display: { xs: "flex", md: "none" } }}>
-        <img src="One-Garlic-logos_white.png" alt="logo" width="100" />
+        <img src={logo} alt="logo" width="40" />
       </Link>
       <Typography
         variant="h6"
@@ -205,7 +206,7 @@ const DesktopNavBar = () => {
   return (
     <>
       <Link href="/" sx={{ display: { xs: "none", md: "flex" } }}>
-        <img src="One-Garlic-logos_white.png" alt="logo" width="100" />
+        <img src={logo} alt="logo" width="40" />
       </Link>
       <Typography
         variant="h6"

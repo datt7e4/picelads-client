@@ -1,54 +1,58 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getPosts } from "./actions/posts";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 
-import Categories from "./components/Categories/Categories";
+import Categories from "./components/PageCategories/Categories";
 import Error from "./components/NavBar/Error/Error";
-import Home from "./pages/Home";
+import Home from "./components/PageHome/Home";
 import Contact from "./components/Contact/Contact";
 import { BACKGROUND_COLOR } from "./constants/data";
 import { IconButton, Typography, Link } from "@mui/material";
-import {
-  FACEBOOK_LINK,
-  ZALO_LINK,
-  PHONE_LINK,
-  PHONE_NUMBER,
-} from "./constants/data";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { useDispatch } from "react-redux";
+import { updateScrollPostion } from "./state/actions/home";
+// import {
+//   FACEBOOK_LINK,
+//   ZALO_LINK,
+//   PHONE_LINK,
+//   PHONE_NUMBER,
+// } from "./constants/data";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
-import Auth from "./components/Auth/Auth";
+// import Auth from "./components/Auth/Auth";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    // console.log("effect call");
-    dispatch(getPosts());
-  }, [dispatch]);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    // console.log(position);
+    dispatch(updateScrollPostion(position));
+  };
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <NavBar />
         <Routes>
           <Route path="/*" element={<Error />} />
           <Route path="/" exact element={<Home />} />
           <Route path="/home" exact element={<Home />} />
           <Route path="/contact" exact element={<Contact />} />
-          <Route path="/categories" exact element={<Categories />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/:id" element={<Categories />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
       <Footer />
     </>
   );
@@ -57,10 +61,17 @@ function App() {
 export default App;
 function Footer() {
   return (
-    <div className="footer" style={{ backgroundColor: BACKGROUND_COLOR }}>
+    <div
+      className="footer"
+      style={{ backgroundColor: BACKGROUND_COLOR, marginTop: "20px" }}
+    >
       <Typography fontSize={18}>
         {"Inspired by "}
-        <Link color="inherit" href={`http://www.milliondollarhomepage.com/`}>
+        <Link
+          color="inherit"
+          target="_blank"
+          href={`http://www.milliondollarhomepage.com/`}
+        >
           milliondollarhomepage
         </Link>
         {"."}

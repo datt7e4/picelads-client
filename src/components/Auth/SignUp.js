@@ -11,7 +11,7 @@ import {
   Divider,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { signup } from "../../actions/auth";
+import { signup } from "../../state/actions/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import GoogleSignIn from "./GoogleSignIn";

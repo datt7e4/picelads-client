@@ -2,21 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal, Box, IconButton } from "@mui/material";
 import Auth from "../Auth/Auth";
 import CloseIcon from "@mui/icons-material/Close";
+import { outline, signinContainer } from "../sharedStyles/modalOutline";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  "@media(max-width: 500px)": {
-    width: "80%",
-  },
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: "10px",
-};
 function SignInButton() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -43,13 +30,14 @@ function SignInButton() {
       >
         Sign In
       </Button>
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={outline}>
           <IconButton
             aria-label="close"
             // style={{ float: "right" }}
@@ -57,8 +45,9 @@ function SignInButton() {
           >
             <CloseIcon fontSize="large" />
           </IconButton>
-
-          <Auth />
+          <Box sx={signinContainer}>
+            <Auth />
+          </Box>
 
           {/* <ChildModal /> */}
         </Box>

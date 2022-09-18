@@ -4,6 +4,9 @@ export const DELETE = "DELETE";
 export const FETCH_ALL = "FETCH_ALL";
 export const FETCH_POST = "FETCH_POST";
 
+export const PANEL_ID = "PANEL_ID";
+export const CLEAR_ID = "CLEAR_ID";
+
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
 
