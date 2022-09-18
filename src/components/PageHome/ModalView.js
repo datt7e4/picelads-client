@@ -5,28 +5,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import CloseIcon from "@mui/icons-material/Close";
 import { BACKGROUND_COLOR } from "../../constants/data";
 
-// const style = {
-//   position: "absolute",
-//   top: "45%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 800,
-//   "@media(max-width: 1000px)": {
-//     width: "80%",
-//   },
-//   "@media(max-width: 500px)": {
-//     width: "80%",
-//   },
-//   bgcolor: "background.paper",
-//   p: 1,
-//   maxHeight: "60%",
-//   overflow: "auto",
-//   outline: "none",
-//   color: "black",
-//   borderRadius: 5,
-// };
-
-const box = {
+const outline = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -35,25 +14,15 @@ const box = {
   borderRadius: "10px",
   padding: "10px 2px",
 };
-const scroll = {
-  // "@media(max-width: 400px)": {
-  //   width: 300,
-  // },
-
-  "@media(max-width: 1400px)": {
-    width: 700,
+const container = {
+  maxHeight: "80vh",
+  "@media(min-width: 1000px)": {
+    width: "900px",
   },
-
-  "@media(max-width: 800px)": {
-    width: 500,
-  },
-  "@media(max-width: 600px)": {
-    width: 350,
-  },
-  width: 800,
-  maxHeight: "70vh",
+  width: "90vw",
   bgcolor: "background.paper",
   overflow: "auto",
+  borderRadius: "10px",
   padding: 1,
 };
 
@@ -61,7 +30,7 @@ function ModalView({ post, handleClose }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <Box sx={box}>
+    <Box sx={outline}>
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -69,7 +38,7 @@ function ModalView({ post, handleClose }) {
       >
         <CloseIcon fontSize="large" />
       </IconButton>
-      <Box sx={scroll}>
+      <Box sx={container}>
         <Grid container>
           <Grid item={true} xs={12}>
             <img

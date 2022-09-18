@@ -21,24 +21,7 @@ import ModalView from "./ModalView";
 import "./Panel.css";
 import { getPostsByPanel } from "../../state/actions/posts";
 
-// const formStyle = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 400,
-//   "@media(max-width: 500px)": {
-//     width: "80%",
-//   },
-//   maxHeight: "60%",
-//   bgcolor: "background.paper",
-//   boxShadow: 24,
-//   overflow: "auto",
-//   p: 4,
-//   borderRadius: 5,
-// };
-
-const box = {
+const outline = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -47,22 +30,22 @@ const box = {
   borderRadius: "10px",
   padding: "10px 2px",
 };
-const scroll = {
-  "@media(max-width: 1400px)": {
-    width: 450,
+const container = {
+  maxHeight: "80vh",
+  "@media(max-width: 900px)": {
+    width: "60vw",
   },
-  "@media(max-width: 600px)": {
-    width: 400,
+  "@media(max-width: 700px)": {
+    width: "80vw",
   },
   "@media(max-width: 500px)": {
-    width: 300,
+    width: "90vw",
   },
-
-  width: 500,
-  maxHeight: "70vh",
-  bgcolor: "background.paper",
+  width: "500px",
   overflow: "auto",
-  padding: 4,
+  bgcolor: "background.paper",
+  borderRadius: "10px",
+  padding: 2,
 };
 
 const user = JSON.parse(localStorage.getItem("profile"));
@@ -125,11 +108,11 @@ function Panel({ id }) {
         >
           {user || post ? (
             personalSelected === "personal" || !post ? (
-              <Box sx={box}>
+              <Box sx={outline}>
                 <IconButton aria-label="close" onClick={handleClose}>
                   <CloseIcon fontSize="large" />
                 </IconButton>
-                <Box sx={scroll}>
+                <Box sx={container}>
                   <Typography textAlign="center" variant="h6" component="h2">
                     Hello {user.result.name}
                     <Form
@@ -148,11 +131,11 @@ function Panel({ id }) {
               <ModalView post={post} handleClose={handleClose} />
             )
           ) : (
-            <Box sx={box}>
+            <Box sx={outline}>
               <IconButton aria-label="close" onClick={handleClose}>
                 <CloseIcon fontSize="large" />
               </IconButton>
-              <Box sx={scroll}>
+              <Box sx={container}>
                 <Typography
                   textAlign="center"
                   id="modal-modal-title"

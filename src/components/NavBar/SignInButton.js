@@ -3,19 +3,25 @@ import { Button, Modal, Box, IconButton } from "@mui/material";
 import Auth from "../Auth/Auth";
 import CloseIcon from "@mui/icons-material/Close";
 
-const style = {
+const outline = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  "@media(max-width: 500px)": {
-    width: "80%",
-  },
   bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
   borderRadius: "10px",
+  padding: "10px 2px",
+};
+const container = {
+  maxHeight: "80vh",
+  "@media(min-width: 1000px)": {
+    maxWidth: "900px",
+  },
+  maxWidth: "90vw",
+  overflow: "auto",
+  bgcolor: "background.paper",
+  borderRadius: "10px",
+  padding: 1,
 };
 function SignInButton() {
   const [open, setOpen] = useState(false);
@@ -43,13 +49,14 @@ function SignInButton() {
       >
         Sign In
       </Button>
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={outline}>
           <IconButton
             aria-label="close"
             // style={{ float: "right" }}
@@ -57,8 +64,9 @@ function SignInButton() {
           >
             <CloseIcon fontSize="large" />
           </IconButton>
-
-          <Auth />
+          <Box sx={container}>
+            <Auth />
+          </Box>
 
           {/* <ChildModal /> */}
         </Box>
