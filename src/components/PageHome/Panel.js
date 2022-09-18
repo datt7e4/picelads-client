@@ -20,33 +20,7 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import ModalView from "./ModalView";
 import "./Panel.css";
 import { getPostsByPanel } from "../../state/actions/posts";
-
-const outline = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  borderRadius: "10px",
-  padding: "10px 2px",
-};
-const container = {
-  maxHeight: "80vh",
-  "@media(max-width: 900px)": {
-    width: "60vw",
-  },
-  "@media(max-width: 700px)": {
-    width: "80vw",
-  },
-  "@media(max-width: 500px)": {
-    width: "90vw",
-  },
-  width: "500px",
-  overflow: "auto",
-  bgcolor: "background.paper",
-  borderRadius: "10px",
-  padding: 2,
-};
+import { outline, signinContainer } from "../sharedStyles/modalOutline";
 
 const user = JSON.parse(localStorage.getItem("profile"));
 const clearData = { posX: "", posY: "", pixelIndex: "" };
@@ -112,9 +86,11 @@ function Panel({ id }) {
                 <IconButton aria-label="close" onClick={handleClose}>
                   <CloseIcon fontSize="large" />
                 </IconButton>
-                <Box sx={container}>
-                  <Typography textAlign="center" variant="h6" component="h2">
-                    Hello {user.result.name}
+                <Box sx={signinContainer}>
+                  <Box textAlign="center" padding={2}>
+                    <Typography variant="h6" component="h2">
+                      Hello {user.result.name}
+                    </Typography>
                     <Form
                       posX={data.posX}
                       posY={data.posY}
@@ -124,7 +100,7 @@ function Panel({ id }) {
                       panelId={id}
                       setPost={setPost}
                     />
-                  </Typography>
+                  </Box>
                 </Box>
               </Box>
             ) : (
@@ -135,7 +111,7 @@ function Panel({ id }) {
               <IconButton aria-label="close" onClick={handleClose}>
                 <CloseIcon fontSize="large" />
               </IconButton>
-              <Box sx={container}>
+              <Box sx={signinContainer}>
                 <Typography
                   textAlign="center"
                   id="modal-modal-title"

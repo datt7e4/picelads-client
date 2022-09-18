@@ -4,27 +4,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import PhoneIcon from "@mui/icons-material/Phone";
 import CloseIcon from "@mui/icons-material/Close";
 import { BACKGROUND_COLOR } from "../../constants/data";
-
-const outline = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  borderRadius: "10px",
-  padding: "10px 2px",
-};
-const container = {
-  maxHeight: "80vh",
-  "@media(min-width: 1000px)": {
-    width: "900px",
-  },
-  width: "90vw",
-  bgcolor: "background.paper",
-  overflow: "auto",
-  borderRadius: "10px",
-  padding: 1,
-};
+import { outline, viewContainer } from "../sharedStyles/modalOutline";
 
 function ModalView({ post, handleClose }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,7 +18,7 @@ function ModalView({ post, handleClose }) {
       >
         <CloseIcon fontSize="large" />
       </IconButton>
-      <Box sx={container}>
+      <Box sx={viewContainer}>
         <Grid container>
           <Grid item={true} xs={12}>
             <img
